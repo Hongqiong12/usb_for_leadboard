@@ -1,0 +1,8 @@
+ WARN  Unsupported engine: wanted: {"node":"^16"} (current: {"node":"v20.16.0","pnpm":"9.13.2"})
+
+> open-insight-front@0.1.0 start /home/admin/code/leaderboard
+> react-scripts start
+
+Starting the development server...
+
+ ELIFECYCLE  Command failed with exit code 1.
