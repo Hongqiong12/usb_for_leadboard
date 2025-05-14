@@ -1,7 +1,7 @@
 {
   "name": "open-insight-front",
   "version": "0.1.0",
-  "homepage": "https://Hongqiong12.github.io/usb_for_leadboard",
+  "homepage": "https://hongqiong12.github.io/usb_for_leadboard",
   "private": true,
   "engines": {
     "node": ">=16"
