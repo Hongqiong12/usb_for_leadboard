@@ -13,7 +13,7 @@ const { Content } = Layout;
 
 const SafetyPage = () => {
   useEffect(() => {
-    document.title = 'Chinese SafetyQA';
+    document.title = 'USB';
   }, []);
 
   return (
