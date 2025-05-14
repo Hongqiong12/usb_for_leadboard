@@ -68,8 +68,8 @@ const App = () => {
           <MyHeader />
           <Routes>
             <Route path="/safety" element={<SafetyPage />} />
-            <Route path="/" element={<SSAPage />} />
-            <Route path="/simpleqa" element={<>
+            <Route path="/ssa" element={<SSAPage />} />
+            <Route path="/" element={<>
               <Content className="container">
                 <Description lastUpdateTime={lastUpdateTime} />
               </Content>

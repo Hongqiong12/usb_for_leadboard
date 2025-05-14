@@ -16,8 +16,25 @@ const fetchCSVData = async () => {
     const text = await response.text();
     const rows = text.split('\n').slice(1); // 去掉标题行
     return rows.map(row => {
-      const [rank, model, source, overall, first, second, third, fourth, fifth, sixth] = row.split('\t');
-      return { rank, model, source, overall, first, second, third, fourth, fifth, sixth};
+      const values = row.split('\t');
+      return {
+        rank: values[0],
+        model: values[1],
+        rirt1: values[2],
+        sirt1: values[3],
+        rist1: values[4],
+        sist1: values[5],
+        rirt2: values[6],
+        sirt2: values[7],
+        rist2: values[8],
+        sist2: values[9],
+        rirt3: values[10],
+        sirt3: values[11],
+        rist3: values[12],
+        sist3: values[13],
+        total: values[14],
+        arr: values[15]
+      };
     });
 };
 
@@ -38,30 +55,23 @@ const activityColumns = (object, t_month) => [
     width: '20%',
   },
   {
-    title: t('insight_board'),
-    dataIndex: 'source',
+    title: 'Total (ASR)',
+    dataIndex: 'total',
     align: 'center',
-    width: '10%',
-    render: function (text, row, index) {
-      return dashboard(text, index, t_month, object);
-    },
+    width: '15%',
+    render: (text) => text ? RoundFloat(text) : '-',
   },
   {
-    title: t('activity'),
-    dataIndex: 'overall',
-    align: 'right',
-    width: '20%',
-  },
-  {
-    title: 'first',
-    dataIndex: 'first',
-    width: '10%',
-    align: 'left',
-  },
+    title: 'ARR',
+    dataIndex: 'arr',
+    align: 'center',
+    width: '15%',
+    render: (text) => text ? RoundFloat(text) : '-',
+  }
 ];
 const activityDetailColumns = (object, t_month) => [
   {
-    title: t('rank'),
+    title: 'Rank',
     dataIndex: 'rank',
     width: '5%',
     align: 'center',
@@ -69,90 +79,125 @@ const activityDetailColumns = (object, t_month) => [
     fixed: 'left',
   },
   {
-    title: t('model'),
+    title: 'Model',
     dataIndex: 'model',
     align: 'center',
-    width: '5%',
-    render: function (text, row, index) {
-      if (object !== 'company') {
-        return (
-          <a
-            href={'https://github.com/' + text}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {text}
-          </a>
-        );
-      } else {
-        return text;
-      }
-    },
+    width: '15%',
   },
   {
-    title: t('source'),
-    dataIndex: 'source',
-    align: 'center',
-    width: '10%',
-    render: function (text, row, index) {
-      return dashboard(text, index, t_month, object);
-    },
+    title: 'Scene 1',
+    children: [
+      {
+        title: 'RIRT',
+        dataIndex: 'rirt1',
+        width: '8%',
+        align: 'center',
+        render: (text) => text ? RoundFloat(text) : '-',
+      },
+      {
+        title: 'SIRT',
+        dataIndex: 'sirt1',
+        width: '8%',
+        align: 'center',
+        render: (text) => text ? RoundFloat(text) : '-',
+      },
+      {
+        title: 'RIST',
+        dataIndex: 'rist1',
+        width: '8%',
+        align: 'center',
+        render: (text) => text ? RoundFloat(text) : '-',
+      },
+      {
+        title: 'SIST',
+        dataIndex: 'sist1',
+        width: '8%',
+        align: 'center',
+        render: (text) => text ? RoundFloat(text) : '-',
+      },
+    ],
   },
   {
-    title: t('activity'),
-    dataIndex: 'overall',
-    align: 'center',
+    title: 'Scene 2',
+    children: [
+      {
+        title: 'RIRT',
+        dataIndex: 'rirt2',
+        width: '8%',
+        align: 'center',
+        render: (text) => text ? RoundFloat(text) : '-',
+      },
+      {
+        title: 'SIRT',
+        dataIndex: 'sirt2',
+        width: '8%',
+        align: 'center',
+        render: (text) => text ? RoundFloat(text) : '-',
+      },
+      {
+        title: 'RIST',
+        dataIndex: 'rist2',
+        width: '8%',
+        align: 'center',
+        render: (text) => text ? RoundFloat(text) : '-',
+      },
+      {
+        title: 'SIST',
+        dataIndex: 'sist2',
+        width: '8%',
+        align: 'center',
+        render: (text) => text ? RoundFloat(text) : '-',
+      },
+    ],
+  },
+  {
+    title: 'Scene 3',
+    children: [
+      {
+        title: 'RIRT',
+        dataIndex: 'rirt3',
+        width: '8%',
+        align: 'center',
+        render: (text) => text ? RoundFloat(text) : '-',
+      },
+      {
+        title: 'SIRT',
+        dataIndex: 'sirt3',
+        width: '8%',
+        align: 'center',
+        render: (text) => text ? RoundFloat(text) : '-',
+      },
+      {
+        title: 'RIST',
+        dataIndex: 'rist3',
+        width: '8%',
+        align: 'center',
+        render: (text) => text ? RoundFloat(text) : '-',
+      },
+      {
+        title: 'SIST',
+        dataIndex: 'sist3',
+        width: '8%',
+        align: 'center',
+        render: (text) => text ? RoundFloat(text) : '-',
+      },
+    ],
+  },
+  {
+    title: 'Total (ASR)',
+    dataIndex: 'total',
     width: '10%',
+    align: 'center',
     render: (text) => text ? RoundFloat(text) : '-',
-    sorter: (a, b) => parseFloat(a.overall || 0) - parseFloat(b.overall || 0),
+    sorter: (a, b) => parseFloat(a.total || 0) - parseFloat(b.total || 0),
   },
   {
-    title: t('first'),
-    dataIndex: 'first',
+    title: 'ARR',
+    dataIndex: 'arr',
     width: '10%',
     align: 'center',
     render: (text) => text ? RoundFloat(text) : '-',
-    sorter: (a, b) => parseFloat(a.first || 0) - parseFloat(b.first || 0),
-  },
-  {
-    title: t('second_cate'),
-    dataIndex: 'second',
-    width: '10%',
-    align: 'center',
-    render: (text) => text ? RoundFloat(text) : '-',
-    sorter: (a, b) => parseFloat(a.second || 0) - parseFloat(b.second || 0),
-  },
-  {
-    title: t('third_cate'),
-    dataIndex: 'third',
-    width: '10%',
-    align: 'center',
-    render: (text) => text ? RoundFloat(text) : '-',
-    sorter: (a, b) => parseFloat(a.third || 0) - parseFloat(b.third || 0),
-  },
-  {
-    title: t('four_cate'),
-    dataIndex: 'fourth',
-    width: '10%',
-    align: 'center',
-    render: (text) => text ? RoundFloat(text) : '-',
-    sorter: (a, b) => parseFloat(a.fourth || 0) - parseFloat(b.fourth || 0),
-  },
-  {
-    title: t('five_cate'),
-    dataIndex: 'fifth',
-    width: '10%',
-    align: 'center',
-    render: (text) => text ? RoundFloat(text) : '-',
-    sorter: (a, b) => parseFloat(a.fifth || 0) - parseFloat(b.fifth || 0),
-  },
-  {
-    title: t('six_cate'),
-    dataIndex: 'sixth',
-    width: '10%',
-    align: 'center',
-    render: (text) => text ? RoundFloat(text) : '-',
-    sorter: (a, b) => parseFloat(a.sixth || 0) - parseFloat(b.sixth || 0),
+    sorter: (a, b) => parseFloat(a.arr || 0) - parseFloat(b.arr || 0),
   },
 ];
 const open_rankColumns = (object, t_month) => [
