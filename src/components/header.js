@@ -14,8 +14,8 @@ const MyHeader = () => {
   const redirectToGitHub = () => {
     const path = window.location.pathname;
     const repoUrl = path.includes('safety')
-      ? 'https://github.com/OpenStellarTeam/BSA'
-      : 'https://github.com/OpenStellarTeam/BSA';
+      ? 'https://anonymous.4open.science/r/USB-SafeBench-4EE3'
+      : 'https://anonymous.4open.science/r/USB-SafeBench-4EE3';
     window.open(repoUrl, '_blank');
   };
 
@@ -63,16 +63,16 @@ const MyHeader = () => {
     <div className="header">
       <div className="header-content">
         <div className="header-logo">
-          <img
-            style={{ height: '45px', width: '50px' }}
-            src={process.env.PUBLIC_URL + '/pics/Main Logo.png'}
-            alt={t('loading')}
-          />
-          <img
-            style={{ width: '200px' }}
-            src={process.env.PUBLIC_URL + '/pics/OpenLeaderboard.png'}
-            alt={t('loading')}
-          />
+//          <img
+//            style={{ height: '45px', width: '50px' }}
+//            src={process.env.PUBLIC_URL + '/pics/Main Logo.png'}
+//            alt={t('loading')}
+//          />
+//          <img
+//            style={{ width: '200px' }}
+//            src={process.env.PUBLIC_URL + '/pics/OpenLeaderboard.png'}
+//            alt={t('loading')}
+//          />
         </div>
         <div className="header-pc">
           {/* <img

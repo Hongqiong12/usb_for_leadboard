@@ -100,5 +100,11 @@
     "DeveloperContributionBoard": "...",
     "XSOSIInsightBoard": "...",
     "OSPOInsightBoard": "..."
+  },
+  "dataset": {
+    "base": "USB-Base 数据集",
+    "hard": "USB-Hard 数据集",
+    "base_desc": "USB-Base 基准数据集上的性能指标",
+    "hard_desc": "USB-Hard 基准数据集上的性能指标"
   }
 }
