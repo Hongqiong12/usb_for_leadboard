@@ -8,9 +8,11 @@ import Dashboard from './Dashboard';
 import Dictionary from './Dictionary';
 import './header.css';
 import QA from './QA';
+
 const MyHeader = () => {
   const { t } = useTranslation();
   const [language, setLanguage] = useState(i18n.language);
+  
   const redirectToGitHub = () => {
     const path = window.location.pathname;
     const repoUrl = path.includes('safety')
@@ -22,6 +24,7 @@ const MyHeader = () => {
   const redirectToweb = () => {
     window.open('TODO:Gitpage', '_blank');
   };
+  
   const changeLanguage = () => {
     let lan;
     if (language == 'zh') {
@@ -34,6 +37,7 @@ const MyHeader = () => {
     i18n.changeLanguage(lan);
     setLanguage(lan);
   };
+  
   const MyMenu = () => {
     return (
       <Menu style={{ background: 'rgba(255,255,255,0)' }} mode="horizontal">
@@ -46,11 +50,11 @@ const MyHeader = () => {
         <Menu.Item key="QA">
           <QA type="word" />
         </Menu.Item>
-        {/* <Menu.Item key="translate">
+        {<Menu.Item key="translate">
           <a href="javascript:" onClick={changeLanguage}>
             中/En
           </a>
-        </Menu.Item> */}
+        </Menu.Item> }
         <Menu.Item key="translate">
           <a href="javascript:" onClick={redirectToGitHub}>
             GitHub
@@ -59,20 +63,12 @@ const MyHeader = () => {
       </Menu>
     );
   };
+  
   return (
     <div className="header">
       <div className="header-content">
         <div className="header-logo">
-//          <img
-//            style={{ height: '45px', width: '50px' }}
-//            src={process.env.PUBLIC_URL + '/pics/Main Logo.png'}
-//            alt={t('loading')}
-//          />
-//          <img
-//            style={{ width: '200px' }}
-//            src={process.env.PUBLIC_URL + '/pics/OpenLeaderboard.png'}
-//            alt={t('loading')}
-//          />
+          {/* 删除的logo图片 */}
         </div>
         <div className="header-pc">
           {/* <img

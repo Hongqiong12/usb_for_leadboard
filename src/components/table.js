@@ -85,7 +85,7 @@ const activityDetailColumns = (object, t_month) => [
     width: '15%',
   },
   {
-    title: 'Scene 1',
+    title: 'National Safety',
     children: [
       {
         title: 'RIRT',
@@ -118,7 +118,7 @@ const activityDetailColumns = (object, t_month) => [
     ],
   },
   {
-    title: 'Scene 2',
+    title: 'Public Safety',
     children: [
       {
         title: 'RIRT',
@@ -151,7 +151,7 @@ const activityDetailColumns = (object, t_month) => [
     ],
   },
   {
-    title: 'Scene 3',
+    title: 'Ethical Safety',
     children: [
       {
         title: 'RIRT',

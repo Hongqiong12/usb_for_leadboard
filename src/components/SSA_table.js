@@ -64,11 +64,11 @@ const ssaColumns = (t) => [
     dataIndex: 'rank',
     width: '5%',
     align: 'center',
-    render: Trophy, // 假设你想保留排名奖杯显示
+    render: Trophy,
     fixed: 'left',
   },
   {
-    title: t('model'),
+    title: t('company'),
     dataIndex: 'model',
     width: '15%',
     align: 'center',
@@ -79,99 +79,67 @@ const ssaColumns = (t) => [
     ),
   },
   {
-    title: 'Safe@1',
-    dataIndex: 'safe1',
+    title: 'RIRT1',
+    dataIndex: 'RIRT1',
     width: '8%',
     align: 'center',
     render: (text) => text ? RoundFloat(text) : '-',
-    sorter: (a, b) => parseFloat(a.safe1 || 0) - parseFloat(b.safe1 || 0),
+    sorter: (a, b) => parseFloat(a.RIRT1 || 0) - parseFloat(b.RIRT1 || 0),
   },
   {
-    title: 'Safe@k',
-    dataIndex: 'safek',
+    title: 'SIRT1',
+    dataIndex: 'SIRT1',
     width: '8%',
     align: 'center',
     render: (text) => text ? RoundFloat(text) : '-',
-    sorter: (a, b) => parseFloat(a.safek || 0) - parseFloat(b.safek || 0),
+    sorter: (a, b) => parseFloat(a.SIRT1 || 0) - parseFloat(b.SIRT1 || 0),
   },
   {
-    title: 'Think@1',
-    dataIndex: 'think1',
+    title: 'RIST1',
+    dataIndex: 'RIST1',
     width: '8%',
     align: 'center',
     render: (text) => text ? RoundFloat(text) : '-',
-    sorter: (a, b) => parseFloat(a.think1 || 0) - parseFloat(b.think1 || 0),
+    sorter: (a, b) => parseFloat(a.RIST1 || 0) - parseFloat(b.RIST1 || 0),
   },
   {
-    title: 'Think@k',
-    dataIndex: 'thinkk',
+    title: 'SIST1',
+    dataIndex: 'SIST1',
     width: '8%',
     align: 'center',
     render: (text) => text ? RoundFloat(text) : '-',
-    sorter: (a, b) => parseFloat(a.thinkk || 0) - parseFloat(b.thinkk || 0),
+    sorter: (a, b) => parseFloat(a.SIST1 || 0) - parseFloat(b.SIST1 || 0),
   },
   {
-    title: 'F-score',
-    dataIndex: 'fscore',
+    title: 'Total_ASR',
+    dataIndex: 'Total_ASR',
     width: '8%',
     align: 'center',
     render: (text) => text ? RoundFloat(text) : '-',
-    sorter: (a, b) => parseFloat(a.fscore || 0) - parseFloat(b.fscore || 0),
+    sorter: (a, b) => parseFloat(a.Total_ASR || 0) - parseFloat(b.Total_ASR || 0),
   },
   {
-    title: 'OS@1',
-    dataIndex: 'os1',
+    title: 'ARR',
+    dataIndex: 'ARR',
     width: '8%',
     align: 'center',
     render: (text) => text ? RoundFloat(text) : '-',
-    sorter: (a, b) => parseFloat(a.os1 || 0) - parseFloat(b.os1 || 0),
-  },
-  {
-    title: 'OS@k',
-    dataIndex: 'osk',
-    width: '8%',
-    align: 'center',
-    render: (text) => text ? RoundFloat(text) : '-',
-    sorter: (a, b) => parseFloat(a.osk || 0) - parseFloat(b.osk || 0),
-  },
-  {
-    title: 'CS@1',
-    dataIndex: 'cs1',
-    width: '8%',
-    align: 'center',
-    render: (text) => text ? RoundFloat(text) : '-',
-    sorter: (a, b) => parseFloat(a.cs1 || 0) - parseFloat(b.cs1 || 0),
-  },
-  {
-    title: 'CS@k',
-    dataIndex: 'csk',
-    width: '8%',
-    align: 'center',
-    render: (text) => text ? RoundFloat(text) : '-',
-    sorter: (a, b) => parseFloat(a.csk || 0) - parseFloat(b.csk || 0),
-  },
-  {
-    title: 'RO@1',
-    dataIndex: 'ro1',
-    width: '8%',
-    align: 'center',
-    render: (text) => text ? RoundFloat(text) : '-',
-    sorter: (a, b) => parseFloat(a.ro1 || 0) - parseFloat(b.ro1 || 0),
-  },
-  {
-    title: 'RO@k',
-    dataIndex: 'rok',
-    width: '8%',
-    align: 'center',
-    render: (text) => text ? RoundFloat(text) : '-',
-    sorter: (a, b) => parseFloat(a.rok || 0) - parseFloat(b.rok || 0),
+    sorter: (a, b) => parseFloat(a.ARR || 0) - parseFloat(b.ARR || 0),
   },
 ];
 
 // 找到表格列定义的部分，可能是 activityColumns, activityDetailColumns 或类似的变量
 // 替换或添加新的列定义：
 
-const activityDetailColumns = (object, t_month) => [
+const renderPercentage = (value) => {
+  if (value === undefined || value === null || value === '') return '-';
+  // 确保将字符串转换为数字
+  const numValue = parseFloat(value);
+  if (isNaN(numValue)) return '-';
+  return `${numValue.toFixed(2)}%`;
+};
+
+const activityDetailColumns = (t, object, t_month) => [
   {
     title: t('rank'),
     dataIndex: 'rank',
@@ -181,7 +149,7 @@ const activityDetailColumns = (object, t_month) => [
     fixed: 'left',
   },
   {
-    title: t('model'),
+    title: t('company'),
     dataIndex: 'model',
     width: '15%',
     align: 'center',
@@ -200,6 +168,7 @@ const activityDetailColumns = (object, t_month) => [
         width: '8%',
         align: 'center',
         render: (text) => text ? RoundFloat(text) : '-',
+        sorter: (a, b) => parseFloat(a.RIRT1 || 0) - parseFloat(b.RIRT1 || 0),
       },
       {
         title: 'SIRT',
@@ -207,6 +176,7 @@ const activityDetailColumns = (object, t_month) => [
         width: '8%',
         align: 'center',
         render: (text) => text ? RoundFloat(text) : '-',
+        sorter: (a, b) => parseFloat(a.SIRT1 || 0) - parseFloat(b.SIRT1 || 0),
       },
       {
         title: 'RIST',
@@ -214,13 +184,15 @@ const activityDetailColumns = (object, t_month) => [
         width: '8%',
         align: 'center',
         render: (text) => text ? RoundFloat(text) : '-',
+        sorter: (a, b) => parseFloat(a.RIST1 || 0) - parseFloat(b.RIST1 || 0),
       },
       {
         title: 'SIST',
         dataIndex: 'SIST1',
-    width: '8%',
-    align: 'center',
-    render: (text) => text ? RoundFloat(text) : '-',
+        width: '8%',
+        align: 'center',
+        render: (text) => text ? RoundFloat(text) : '-',
+        sorter: (a, b) => parseFloat(a.SIST1 || 0) - parseFloat(b.SIST1 || 0),
       },
     ],
   },
@@ -230,30 +202,30 @@ const activityDetailColumns = (object, t_month) => [
       {
         title: 'RIRT',
         dataIndex: 'RIRT2',
-    width: '8%',
-    align: 'center',
-    render: (text) => text ? RoundFloat(text) : '-',
-  },
-  {
+        width: '8%',
+        align: 'center',
+        render: (text) => text ? RoundFloat(text) : '-',
+      },
+      {
         title: 'SIRT',
         dataIndex: 'SIRT2',
-    width: '8%',
-    align: 'center',
-    render: (text) => text ? RoundFloat(text) : '-',
-  },
-  {
+        width: '8%',
+        align: 'center',
+        render: (text) => text ? RoundFloat(text) : '-',
+      },
+      {
         title: 'RIST',
         dataIndex: 'RIST2',
-    width: '8%',
-    align: 'center',
-    render: (text) => text ? RoundFloat(text) : '-',
-  },
-  {
+        width: '8%',
+        align: 'center',
+        render: (text) => text ? RoundFloat(text) : '-',
+      },
+      {
         title: 'SIST',
         dataIndex: 'SIST2',
-    width: '8%',
-    align: 'center',
-    render: (text) => text ? RoundFloat(text) : '-',
+        width: '8%',
+        align: 'center',
+        render: (text) => text ? RoundFloat(text) : '-',
       },
     ],
   },
@@ -263,30 +235,30 @@ const activityDetailColumns = (object, t_month) => [
       {
         title: 'RIRT',
         dataIndex: 'RIRT3',
-    width: '8%',
-    align: 'center',
-    render: (text) => text ? RoundFloat(text) : '-',
-  },
-  {
+        width: '8%',
+        align: 'center',
+        render: (text) => text ? RoundFloat(text) : '-',
+      },
+      {
         title: 'SIRT',
         dataIndex: 'SIRT3',
-    width: '8%',
-    align: 'center',
-    render: (text) => text ? RoundFloat(text) : '-',
-  },
-  {
+        width: '8%',
+        align: 'center',
+        render: (text) => text ? RoundFloat(text) : '-',
+      },
+      {
         title: 'RIST',
         dataIndex: 'RIST3',
-    width: '8%',
-    align: 'center',
-    render: (text) => text ? RoundFloat(text) : '-',
-  },
-  {
+        width: '8%',
+        align: 'center',
+        render: (text) => text ? RoundFloat(text) : '-',
+      },
+      {
         title: 'SIST',
         dataIndex: 'SIST3',
-    width: '8%',
-    align: 'center',
-    render: (text) => text ? RoundFloat(text) : '-',
+        width: '8%',
+        align: 'center',
+        render: (text) => text ? RoundFloat(text) : '-',
       },
     ],
   },
@@ -439,137 +411,60 @@ function DateTitle(props) {
   return <h1>{solveDate(props.year, props.month)}</h1>;
 }
 
-function MyTable(props) {
-  const [loading, setLoading] = useState(true);
-  const [baseData, setBaseData] = useState([]);
-  const [hardData, setHardData] = useState([]);
-  const [showSize, setShowSize] = useState(25);
+// 处理 CSV 数据的函数
+const processData = (data) => {
+  return data.map(item => ({
+    ...item,
+    // 移除百分号并转换为数字
+    RIRT1: parseFloat(item.RIRT1?.replace('%', '') || 0),
+    SIRT1: parseFloat(item.SIRT1?.replace('%', '') || 0),
+    RIST1: parseFloat(item.RIST1?.replace('%', '') || 0),
+    SIST1: parseFloat(item.SIST1?.replace('%', '') || 0),
+    RIRT2: parseFloat(item.RIRT2?.replace('%', '') || 0),
+    SIRT2: parseFloat(item.SIRT2?.replace('%', '') || 0),
+    RIST2: parseFloat(item.RIST2?.replace('%', '') || 0),
+    SIST2: parseFloat(item.SIST2?.replace('%', '') || 0),
+    RIRT3: parseFloat(item.RIRT3?.replace('%', '') || 0),
+    SIRT3: parseFloat(item.SIRT3?.replace('%', '') || 0),
+    RIST3: parseFloat(item.RIST3?.replace('%', '') || 0),
+    SIST3: parseFloat(item.SIST3?.replace('%', '') || 0),
+    Total_ASR: parseFloat(item['Total(ASR)']?.replace('%', '') || 0),
+    ARR: parseFloat(item.ARR?.replace('%', '') || 0),
+  }));
+};
+
+function SSATable() {
   const { t } = useTranslation();
-  
-  useEffect(() => {
-    // 加载 USB-Base 数据
-    fetch(`${process.env.PUBLIC_URL}/usb_base_results.csv`)
-      .then(response => response.text())
-      .then(text => {
-        const rows = text.split('\n').slice(1); // 跳过标题行
-        const data = rows.map(row => {
-          const [rank, model, url, ...metrics] = row.split(',');
-          return {
-            rank,
-            model,
-            url,
-            RIRT1: metrics[0],
-            SIRT1: metrics[1],
-            // ... 其他指标映射
-          };
-        });
-        setBaseData(data);
-      })
-      .catch(error => console.error('Error loading USB-Base data:', error));
+  const [activeTab, setActiveTab] = useState('1');
 
-    // 加载 USB-Hard 数据
-    fetch(`${process.env.PUBLIC_URL}/usb_hard_results.csv`)
-      .then(response => response.text())
-      .then(text => {
-        const rows = text.split('\n').slice(1);
-        const data = rows.map(row => {
-          const [rank, model, url, ...metrics] = row.split(',');
-          return {
-            rank,
-            model,
-            url,
-            RIRT1: metrics[0],
-            SIRT1: metrics[1],
-            // ... 其他指标映射
-          };
-        });
-        setHardData(data);
-      })
-      .catch(error => console.error('Error loading USB-Hard data:', error));
-
-    setLoading(false);
-  }, []);
-
-  const expandData = () => {
-    setShowSize(prevSize => prevSize + 25);
+  // 根据当前选中的 tab 选择要显示的数据
+  const getTableData = () => {
+    return activeTab === '1' ? hardcodedDataBase : hardcodedDataHard;
   };
 
   return (
-    <div className="table">
-      <div className="table-content">
-        <Card
-          style={{
-            width: '100%',
-            background: '#FFFFFF',
-            boxShadow: '0px 15px 20px 15px #F7F7FF',
-          }}
-        >
-          <Tabs defaultActiveKey="base" type="card">
-            <TabPane tab="USB-Base Dataset" key="base">
-              <Table
-                columns={activityDetailColumns(props.object, props.t_month)}
-                dataSource={baseData.slice(0, Math.min(showSize, baseData.length))}
-                rowKey={(record) => `base-${record.model}`}
-                pagination={false}
-                loading={loading}
-                scroll={{ x: 'max-content' }}
-                bordered
-                rowClassName={(record, index) => (index % 2 === 0 ? 'table-even' : 'table-odd')}
-              />
-            </TabPane>
-            <TabPane tab="USB-Hard Dataset" key="hard">
-          <Table
-                columns={activityDetailColumns(props.object, props.t_month)}
-                dataSource={hardData.slice(0, Math.min(showSize, hardData.length))}
-                rowKey={(record) => `hard-${record.model}`}
-            pagination={false}
-            loading={loading}
-            scroll={{ x: 'max-content' }}
-                bordered
-            rowClassName={(record, index) => (index % 2 === 0 ? 'table-even' : 'table-odd')}
-          />
-            </TabPane>
-          </Tabs>
-          
-          <Row style={{ marginTop: '10px' }}>
-            <Col span={12}>
-              <Row justify="start">
-                <Col>
-                  {showSize < baseData.length + hardData.length ? (
-                    <a
-                      style={{
-                        color: '#FFCC19',
-                        fontSize: '18px',
-                      }}
-                      onClick={expandData}
-                    >
-                      {t('showMore') + '>>'}
-                    </a>
-                  ) : (
-                    <span
-                      style={{
-                        color: 'gray',
-                        fontSize: '18px',
-                      }}
-                    >
-                      {t('noMore')}
-                    </span>
-                  )}
-                </Col>
-              </Row>
-            </Col>
-            <Col span={12}>
-              <Row justify="end">
-                <Col>
-                  <QAmiss />
-                </Col>
-              </Row>
-            </Col>
-          </Row>
-        </Card>
-      </div>
+    <div className="table-container">
+      <Tabs activeKey={activeTab} onChange={setActiveTab}>
+        <TabPane tab="USB-Base" key="1">
+          <div style={{ marginBottom: '16px' }}>
+            {t('dataset.base_desc')}
+          </div>
+        </TabPane>
+        <TabPane tab="USB-Hard" key="2">
+          <div style={{ marginBottom: '16px' }}>
+            {t('dataset.hard_desc')}
+          </div>
+        </TabPane>
+      </Tabs>
+
+      <Table
+        columns={activityDetailColumns(t)}
+        dataSource={getTableData()}
+        scroll={{ x: true }}
+        pagination={false}
+      />
     </div>
   );
 }
 
-export default MyTable;
+export default SSATable;

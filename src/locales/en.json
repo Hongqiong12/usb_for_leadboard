@@ -5,6 +5,7 @@
     "bot": "Model Series"
   },
   "chinese": "openai",
+  "model": "Model",
   "global": "qwen",
   "time": "Time: ",
   "index": "Source Type: ",
@@ -43,6 +44,17 @@
   "opendigger": "...",
   "no_result": "No data available",
   "input_placeholder": "Search...",
+  "Question": {
+    "Q1": "How to submit new model results to the leaderboard?",
+    "Q2": "Taotian Group Algorithm Technology - Future Life Laboratory Team"
+  },
+  "Answer": {
+    "A1": {
+      "simple": "Thank you for your interest and support for our website and leaderboard! We value your contribution and confidence in our work. Currently, we are actively building and improving our leaderboard functionality, and look forward to providing you with a more convenient and efficient user experience in the near future. If you have any questions, suggestions, or would like to add your model results to our rankings, we welcome you to contact us directly via email. Please describe your request in detail and send it to the following email address: heyancheng.hyc@taobao.com. Our team will respond to your email promptly and assist you in displaying your model on the leaderboard. If you have any questions or need further assistance, please feel free to contact us. Thank you for your understanding and support!",
+      "safety": "Thank you for your interest and support for our website and leaderboard! We value your contribution and confidence in our work. Currently, we are actively building and improving our leaderboard functionality, and look forward to providing you with a more convenient and efficient user experience in the near future. If you have any questions, suggestions, or would like to add your model results to our rankings, we welcome you to contact us directly via email. Please describe your request in detail and send it to the following email address: tanyingshui.tys@taobao.com. Our team will respond to your email promptly and assist you in displaying your model on the leaderboard. If you have any questions or need further assistance, please feel free to contact us. Thank you for your understanding and support!"
+    },
+    "A2": "Taotian Group Algorithm Technology - Future Life Laboratory Team. To build future-oriented life and consumption patterns, and to further improve user experience and merchant operations, Taotian Group has concentrated computing power, data, and top technical talent to establish the Future Life Laboratory. The laboratory focuses on AI technology directions such as large models and multi-modality, dedicated to creating large model-related basic algorithms, model capabilities, and various AI Native applications, leading technological innovation in the field of life consumption."
+  },
   "glossary": "Metrics",
   "Glossary": {
     "activity": "Correct (CO): Number of correct answers / Total questions; Incorrect (IN): Number of incorrect answers / Total questions; Not attempted (NA): Number of refused answers / Total questions; Correct given attempted (CGA): Number of correct answers / Number of attempted answers; F-score: F-value of answer accuracy and precision",
@@ -62,6 +74,32 @@
     "supported_by": "Supported By",
     "sponsor": "Partnership",
     "sponsor_info": "Leave a seat vacant for you"
+  },
+  "InsightBoard": "Project URL",
+  "ViewDetails": "View Details",
+  "boardtitle": {
+    "GitHubGlobalIncreaseBoard": "1",
+    "OSSSupplyChainEcoBoard": "2",
+    "OSTechnologyAndLanguageBoard": "3",
+    "OSDbDomainInsightBoard": "4",
+    "GlobalBusinessOSInsightBoard": "5",
+    "MuLanOSCommunityInsightBoard": "6",
+    "OSProjectInsightBoard": "7",
+    "DeveloperContributionBoard": "8",
+    "XSOSIInsightBoard": "9",
+    "OSPOInsightBoard": "10"
+  },
+  "boardcontent": {
+    "GitHubGlobalIncreaseBoard": "...",
+    "OSSSupplyChainEcoBoard": "...",
+    "OSTechnologyAndLanguageBoard": "...",
+    "OSDbDomainInsightBoard": "...",
+    "GlobalBusinessOSInsightBoard": "...",
+    "MuLanOSCommunityInsightBoard": "...",
+    "OSProjectInsightBoard": "...",
+    "DeveloperContributionBoard": "...",
+    "XSOSIInsightBoard": "...",
+    "OSPOInsightBoard": "..."
   },
   "dataset": {
     "base": "USB-Base Dataset",

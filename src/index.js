@@ -12,6 +12,7 @@ import Description from './Description';
 import './index.css';
 import SafetyPage from './SafetyPage';
 import SSAPage from './SSA_Page';
+import SSATable from './components/SSA_table';
 // 确保i18n在应用初始化之前完成加载
 import './util/i18n';
 
@@ -74,6 +75,7 @@ const App = () => {
                 <Description lastUpdateTime={lastUpdateTime} />
               </Content>
               <MyTable t={t} year={year} month={monthIndex} />
+              <SSATable />
               <MyFooter />
             </>} />
           </Routes>

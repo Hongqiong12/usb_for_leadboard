@@ -64,7 +64,7 @@
 }
 
 .table-odd {
-  background-color: #
+  background-color: #fafafa;
 }
 
 /* 数据集切换按钮样式 */
@@ -113,20 +113,74 @@
 
 /* 表格样式 */
 .ant-table-thead > tr > th {
-  background: #fafafa;
-  font-weight: 600;
+  background-color: #fafafa;
+  border-bottom: 1px solid #f0f0f0;
 }
 
-.ant-table-tbody > tr.table-even {
-  background: #fff;
+.ant-table-thead > tr > th.ant-table-cell-fix-left,
+.ant-table-thead > tr > th.ant-table-cell-fix-right {
+  background-color: #fafafa;
 }
 
-.ant-table-tbody > tr.table-odd {
-  background: #fafafa;
+.table-even {
+  background-color: #ffffff;
+}
+
+.table-odd {
+  background-color: #fafafa;
 }
 
 /* 分组标题样式 */
 .ant-table-thead > tr > th.ant-table-cell-with-append {
-  background: #f5f5f5;
+  background-color: #f5f5f5;
   font-weight: bold;
+}
+
+/* 边框样式 */
+.ant-table-bordered .ant-table-cell {
+  border-right: 1px solid #f0f0f0;
+}
+
+.ant-table-bordered .ant-table-container {
+  border-left: 1px solid #f0f0f0;
+}
+
+/* 数据集切换容器 */
+.dataset-switcher {
+  margin-bottom: 24px;
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+/* 数据集标题 */
+.dataset-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+/* 数据集描述 */
+.dataset-description {
+  color: #666;
+  margin-bottom: 16px;
+}
+
+/* 切换按钮组 */
+.dataset-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.dataset-button {
+  padding: 8px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.dataset-button.active {
+  background: #1890ff;
+  color: white;
 }
