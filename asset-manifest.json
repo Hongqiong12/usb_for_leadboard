@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/usb_for_leadboard/static/css/main.de913dff.css",
+    "main.js": "/usb_for_leadboard/static/js/main.b4441366.js",
+    "index.html": "/usb_for_leadboard/index.html",
+    "main.de913dff.css.map": "/usb_for_leadboard/static/css/main.de913dff.css.map",
+    "main.b4441366.js.map": "/usb_for_leadboard/static/js/main.b4441366.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.de913dff.css",
+    "static/js/main.b4441366.js"
+  ]
+}
