@@ -47,7 +47,7 @@ const Description = (props) => {
         gutter={4}
       >
         <Col>
-          <img src={process.env.PUBLIC_URL + "/pics/Ellipse BG.png"} alt="Ellipse" />
+          <img src={process.env.PUBLIC_URL + "/pics/EllipseBG.png"} alt="Ellipse" />
         </Col>
         <Col>
           <span className="myFontColor">
