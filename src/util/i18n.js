@@ -20,6 +20,11 @@ i18n
       en: { translation: require('../locales/en.json') },
       zh: { translation: require('../locales/zh.json') },
     },
+    lng: 'en', // 设置默认语言为英语
+    fallbackLng: 'en', // 如果找不到语言包，默认使用英语
+    interpolation: {
+      escapeValue: false,
+    },
   });
 
 export default i18n;

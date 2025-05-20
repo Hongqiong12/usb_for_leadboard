@@ -46,14 +46,14 @@
   "input_placeholder": "Search...",
   "Question": {
     "Q1": "How to submit new model results to the leaderboard?",
-    "Q2": "Taotian Group Algorithm Technology - Future Life Laboratory Team"
+    "Q2": "USB-SafeBench Team"
   },
   "Answer": {
     "A1": {
-      "simple": "Thank you for your interest and support for our website and leaderboard! We value your contribution and confidence in our work. Currently, we are actively building and improving our leaderboard functionality, and look forward to providing you with a more convenient and efficient user experience in the near future. If you have any questions, suggestions, or would like to add your model results to our rankings, we welcome you to contact us directly via email. Please describe your request in detail and send it to the following email address: heyancheng.hyc@taobao.com. Our team will respond to your email promptly and assist you in displaying your model on the leaderboard. If you have any questions or need further assistance, please feel free to contact us. Thank you for your understanding and support!",
-      "safety": "Thank you for your interest and support for our website and leaderboard! We value your contribution and confidence in our work. Currently, we are actively building and improving our leaderboard functionality, and look forward to providing you with a more convenient and efficient user experience in the near future. If you have any questions, suggestions, or would like to add your model results to our rankings, we welcome you to contact us directly via email. Please describe your request in detail and send it to the following email address: tanyingshui.tys@taobao.com. Our team will respond to your email promptly and assist you in displaying your model on the leaderboard. If you have any questions or need further assistance, please feel free to contact us. Thank you for your understanding and support!"
+      "simple": "Thank you for your attention and support to our website and list! We value your contribution and confidence in our work. We are currently actively building and improving our list functions, and look forward to providing you with a more convenient and efficient user experience in the near future.",
+      "safety": "Thank you for your attention and support to our website and list! We value your contribution and confidence in our work. We are currently actively building and improving our list functions, and look forward to providing you with a more convenient and efficient user experience in the near future. "
     },
-    "A2": "Taotian Group Algorithm Technology - Future Life Laboratory Team. To build future-oriented life and consumption patterns, and to further improve user experience and merchant operations, Taotian Group has concentrated computing power, data, and top technical talent to establish the Future Life Laboratory. The laboratory focuses on AI technology directions such as large models and multi-modality, dedicated to creating large model-related basic algorithms, model capabilities, and various AI Native applications, leading technological innovation in the field of life consumption."
+    "A2": ""
   },
   "glossary": "Metrics",
   "Glossary": {

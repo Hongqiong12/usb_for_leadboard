@@ -1,3 +1,4 @@
+
 import { Card, Col, message, Row, Table, Radio, Tabs } from 'antd';
 import 'antd/dist/antd.css';
 import React, { useEffect, useState } from 'react';
@@ -55,413 +56,209 @@ const hardcodedDataHard = [
   { rank: '17', model: 'VILA-7B', url: 'https://huggingface.co/Efficient-Large-Model/VILA-7b', RIRT1: '94.59', SIRT1: '98.57', RIST1: '94.67', SIST1: '95.24', RIRT2: '95.02', SIRT2: '96.64', RIST2: '94.26', SIST2: '94.89', RIRT3: '95.14', SIRT3: '96.33', RIST3: '87.35', SIST3: '88.61', Total_ASR: '93.97', ARR: '32.51' }
 ];
 
-// 找到表格列定义的部分，可能是 activityColumns, activityDetailColumns 或类似的变量
-// 替换或添加新的列定义：
-
-const ssaColumns = (t) => [
-  {
-    title: t('rank'),
-    dataIndex: 'rank',
-    width: '5%',
-    align: 'center',
-    render: Trophy,
-    fixed: 'left',
-  },
-  {
-    title: t('company'),
-    dataIndex: 'model',
-    width: '15%',
-    align: 'center',
-    render: (text, record) => (
-      <a href={record.url} target="_blank" rel="noreferrer">
-        {text}
-      </a>
-    ),
-  },
-  {
-    title: 'RIRT1',
-    dataIndex: 'RIRT1',
-    width: '8%',
-    align: 'center',
-    render: (text) => text ? RoundFloat(text) : '-',
-    sorter: (a, b) => parseFloat(a.RIRT1 || 0) - parseFloat(b.RIRT1 || 0),
-  },
-  {
-    title: 'SIRT1',
-    dataIndex: 'SIRT1',
-    width: '8%',
-    align: 'center',
-    render: (text) => text ? RoundFloat(text) : '-',
-    sorter: (a, b) => parseFloat(a.SIRT1 || 0) - parseFloat(b.SIRT1 || 0),
-  },
-  {
-    title: 'RIST1',
-    dataIndex: 'RIST1',
-    width: '8%',
-    align: 'center',
-    render: (text) => text ? RoundFloat(text) : '-',
-    sorter: (a, b) => parseFloat(a.RIST1 || 0) - parseFloat(b.RIST1 || 0),
-  },
-  {
-    title: 'SIST1',
-    dataIndex: 'SIST1',
-    width: '8%',
-    align: 'center',
-    render: (text) => text ? RoundFloat(text) : '-',
-    sorter: (a, b) => parseFloat(a.SIST1 || 0) - parseFloat(b.SIST1 || 0),
-  },
-  {
-    title: 'Total_ASR',
-    dataIndex: 'Total_ASR',
-    width: '8%',
-    align: 'center',
-    render: (text) => text ? RoundFloat(text) : '-',
-    sorter: (a, b) => parseFloat(a.Total_ASR || 0) - parseFloat(b.Total_ASR || 0),
-  },
-  {
-    title: 'ARR',
-    dataIndex: 'ARR',
-    width: '8%',
-    align: 'center',
-    render: (text) => text ? RoundFloat(text) : '-',
-    sorter: (a, b) => parseFloat(a.ARR || 0) - parseFloat(b.ARR || 0),
-  },
-];
-
-// 找到表格列定义的部分，可能是 activityColumns, activityDetailColumns 或类似的变量
-// 替换或添加新的列定义：
-
-const renderPercentage = (value) => {
-  if (value === undefined || value === null || value === '') return '-';
-  // 确保将字符串转换为数字
-  const numValue = parseFloat(value);
-  if (isNaN(numValue)) return '-';
-  return `${numValue.toFixed(2)}%`;
-};
-
-const activityDetailColumns = (t, object, t_month) => [
-  {
-    title: t('rank'),
-    dataIndex: 'rank',
-    width: '5%',
-    align: 'center',
-    render: Trophy,
-    fixed: 'left',
-  },
-  {
-    title: t('company'),
-    dataIndex: 'model',
-    width: '15%',
-    align: 'center',
-    render: (text, record) => (
-      <a href={record.url} target="_blank" rel="noreferrer">
-        {text}
-      </a>
-    ),
-  },
-  {
-    title: 'National Safety',
-    children: [
-      {
-        title: 'RIRT',
-        dataIndex: 'RIRT1',
-        width: '8%',
-        align: 'center',
-        render: (text) => text ? RoundFloat(text) : '-',
-        sorter: (a, b) => parseFloat(a.RIRT1 || 0) - parseFloat(b.RIRT1 || 0),
-      },
-      {
-        title: 'SIRT',
-        dataIndex: 'SIRT1',
-        width: '8%',
-        align: 'center',
-        render: (text) => text ? RoundFloat(text) : '-',
-        sorter: (a, b) => parseFloat(a.SIRT1 || 0) - parseFloat(b.SIRT1 || 0),
-      },
-      {
-        title: 'RIST',
-        dataIndex: 'RIST1',
-        width: '8%',
-        align: 'center',
-        render: (text) => text ? RoundFloat(text) : '-',
-        sorter: (a, b) => parseFloat(a.RIST1 || 0) - parseFloat(b.RIST1 || 0),
-      },
-      {
-        title: 'SIST',
-        dataIndex: 'SIST1',
-        width: '8%',
-        align: 'center',
-        render: (text) => text ? RoundFloat(text) : '-',
-        sorter: (a, b) => parseFloat(a.SIST1 || 0) - parseFloat(b.SIST1 || 0),
-      },
-    ],
-  },
-  {
-    title: 'Public Safety',
-    children: [
-      {
-        title: 'RIRT',
-        dataIndex: 'RIRT2',
-        width: '8%',
-        align: 'center',
-        render: (text) => text ? RoundFloat(text) : '-',
-      },
-      {
-        title: 'SIRT',
-        dataIndex: 'SIRT2',
-        width: '8%',
-        align: 'center',
-        render: (text) => text ? RoundFloat(text) : '-',
-      },
-      {
-        title: 'RIST',
-        dataIndex: 'RIST2',
-        width: '8%',
-        align: 'center',
-        render: (text) => text ? RoundFloat(text) : '-',
-      },
-      {
-        title: 'SIST',
-        dataIndex: 'SIST2',
-        width: '8%',
-        align: 'center',
-        render: (text) => text ? RoundFloat(text) : '-',
-      },
-    ],
-  },
-  {
-    title: 'Ethical Safety',
-    children: [
-      {
-        title: 'RIRT',
-        dataIndex: 'RIRT3',
-        width: '8%',
-        align: 'center',
-        render: (text) => text ? RoundFloat(text) : '-',
-      },
-      {
-        title: 'SIRT',
-        dataIndex: 'SIRT3',
-        width: '8%',
-        align: 'center',
-        render: (text) => text ? RoundFloat(text) : '-',
-      },
-      {
-        title: 'RIST',
-        dataIndex: 'RIST3',
-        width: '8%',
-        align: 'center',
-        render: (text) => text ? RoundFloat(text) : '-',
-      },
-      {
-        title: 'SIST',
-        dataIndex: 'SIST3',
-        width: '8%',
-        align: 'center',
-        render: (text) => text ? RoundFloat(text) : '-',
-      },
-    ],
-  },
-  {
-    title: 'Total (ASR)',
-    dataIndex: 'Total_ASR',
-    width: '10%',
-    align: 'center',
-    render: (text) => text ? RoundFloat(text) : '-',
-  },
-  {
-    title: 'ARR',
-    dataIndex: 'ARR',
-    width: '10%',
-    align: 'center',
-    render: (text) => text ? RoundFloat(text) : '-',
-  },
-];
-
-const open_rankColumns = (t, object, t_month) => [
-  {
-    title: t('rank'),
-    dataIndex: 'rank',
-    width: '5%',
-    render: Trophy,
-    align: 'center',
-    fixed: 'left',
-  },
-  ...(object == 'actor'
-    ? [
-        {
-          title: t('avatar'),
-          dataIndex: 'id',
-          width: '5%',
-          align: 'center',
-          render: MyAvatar,
-          fixed: 'left',
-        },
-      ]
-    : []),
-  {
-    title: t(object),
-    dataIndex: 'name',
-    width: '20%',
-    align: 'center',
-    render: function (text) {
-      if (object !== 'company') {
-        return (
-          <a
-            href={'https://github.com/' + text}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {text}
-          </a>
-        );
-      } else {
-        return text;
-      }
-    },
-  },
-  {
-    title: t('insight_board'),
-    dataIndex: 'name',
-    align: 'center',
-    width: '10%',
-    render: function (text, row, index) {
-      return dashboard(text, index, t_month, object);
-    },
-  },
-  {
-    title: t('influence'),
-    dataIndex: 'value',
-    width: '20%',
-    align: 'right',
-    render: (text, row, index) => {
-      return RoundFloat(text);
-    },
-  },
-  {
-    title: '',
-    dataIndex: 'valueDelta',
-    width: '10%',
-    align: 'left',
-    render: (text, row, index) => {
-      text = RoundFloat(text);
-      return PointRender(text, row, index);
-    },
-  },
-];
-const solveDate = (year, month) => {
-  if (year === null && month === null) {
-    return 'not found';
-  }
-  if (month === null) {
-    return year + '年';
-  }
-  return year + '年' + (month + 1) + '月';
-};
-
-function dashboard(text, index, t_month, object) {
-  if (text.includes('huggingface')) {
-    let [org_name, repo_name] = text.split('/');
-    const t_month_copy = t_month + ' ' + '00:00:00';
-    let params = {
-      org_name,
-      repo_name,
-      t_month_copy,
-      t_month,
-    };
-    return (
-      <a
-        href={
-            text
-        }
-        target="_blank"
-        rel="noreferrer"
-      >
-        <img
-          alt="dashboard"
-          src={process.env.PUBLIC_URL + "/pics/dashboard.png"}
-          style={{ height: '20px', width: '20px' }}
-        />
-      </a>
-    );
-  } else {
-    let params = {
-      communityName: text,
-    };
-    let jsonString = JSON.stringify(params);
-    return (
-      <a
-        href={
-            text
-        }
-        target="_blank"
-        rel="noreferrer"
-      >
-        <img
-          alt="dashboard"
-          src={process.env.PUBLIC_URL + "/pics/dashboard1.png"}
-          style={{ height: '20px', width: '20px' }}
-        />
-      </a>
-    );
-  }
-}
-
-function DateTitle(props) {
-  return <h1>{solveDate(props.year, props.month)}</h1>;
-}
-
-// 处理 CSV 数据的函数
-const processData = (data) => {
-  return data.map(item => ({
-    ...item,
-    // 移除百分号并转换为数字
-    RIRT1: parseFloat(item.RIRT1?.replace('%', '') || 0),
-    SIRT1: parseFloat(item.SIRT1?.replace('%', '') || 0),
-    RIST1: parseFloat(item.RIST1?.replace('%', '') || 0),
-    SIST1: parseFloat(item.SIST1?.replace('%', '') || 0),
-    RIRT2: parseFloat(item.RIRT2?.replace('%', '') || 0),
-    SIRT2: parseFloat(item.SIRT2?.replace('%', '') || 0),
-    RIST2: parseFloat(item.RIST2?.replace('%', '') || 0),
-    SIST2: parseFloat(item.SIST2?.replace('%', '') || 0),
-    RIRT3: parseFloat(item.RIRT3?.replace('%', '') || 0),
-    SIRT3: parseFloat(item.SIRT3?.replace('%', '') || 0),
-    RIST3: parseFloat(item.RIST3?.replace('%', '') || 0),
-    SIST3: parseFloat(item.SIST3?.replace('%', '') || 0),
-    Total_ASR: parseFloat(item['Total(ASR)']?.replace('%', '') || 0),
-    ARR: parseFloat(item.ARR?.replace('%', '') || 0),
-  }));
-};
+const activityDetailColumns = (t) => [
+   {
+       title: t('rank'),
+       dataIndex: 'rank',
+       width: '6%',
+       align: 'center',
+       render: Trophy,
+       fixed: 'left',
+     },
+    {
+       title: t('company'),
+       dataIndex: 'model',
+       width: '9%',
+       align: 'center',
+       render: (text, record) => (
+         <a href={record.url} target="_blank" rel="noreferrer">{text}</a>
+       ),
+     },
+   {
+     title: 'National Safety',
+     children: [
+       {
+         title: 'RIRT',
+         dataIndex: 'RIRT1',
+         width: '4%',
+         align: 'center',
+         render: (text) => text ? RoundFloat(text) : '-',
+         sorter: (a, b) => parseFloat(a.RIRT1 || 0) - parseFloat(b.RIRT1 || 0),
+       },
+       {
+         title: 'SIRT',
+         dataIndex: 'SIRT1',
+         width: '4%',
+         align: 'center',
+         render: (text) => text ? RoundFloat(text) : '-',
+         sorter: (a, b) => parseFloat(a.SIRT1 || 0) - parseFloat(b.SIRT1 || 0),
+       },
+       {
+         title: 'RIST',
+         dataIndex: 'RIST1',
+         width: '4%',
+         align: 'center',
+         render: (text) => text ? RoundFloat(text) : '-',
+         sorter: (a, b) => parseFloat(a.RIST1 || 0) - parseFloat(b.RIST1 || 0),
+       },
+       {
+         title: 'SIST',
+         dataIndex: 'SIST1',
+         width: '4%',
+         align: 'center',
+         render: (text) => text ? RoundFloat(text) : '-',
+         sorter: (a, b) => parseFloat(a.SIST1 || 0) - parseFloat(b.SIST1 || 0),
+       },
+     ],
+   },
+   {
+     title: 'Public Safety',
+     children: [
+       {
+         title: 'RIRT',
+         dataIndex: 'RIRT2',
+         width: '4%',
+         align: 'center',
+         render: (text) => text ? RoundFloat(text) : '-',
+         sorter: (a, b) => parseFloat(a.RIRT2 || 0) - parseFloat(b.RIRT2 || 0),
+       },
+       {
+         title: 'SIRT',
+         dataIndex: 'SIRT2',
+         width: '4%',
+         align: 'center',
+         render: (text) => text ? RoundFloat(text) : '-',
+         sorter: (a, b) => parseFloat(a.SIRT2 || 0) - parseFloat(b.SIRT2 || 0),
+       },
+       {
+         title: 'RIST',
+         dataIndex: 'RIST2',
+         width: '4%',
+         align: 'center',
+         render: (text) => text ? RoundFloat(text) : '-',
+         sorter: (a, b) => parseFloat(a.RIST2 || 0) - parseFloat(b.RIST2 || 0),
+       },
+       {
+         title: 'SIST',
+         dataIndex: 'SIST2',
+         width: '4%',
+         align: 'center',
+         render: (text) => text ? RoundFloat(text) : '-',
+         sorter: (a, b) => parseFloat(a.SIST2 || 0) - parseFloat(b.SIST2 || 0),
+       },
+     ],
+   },
+   {
+     title: 'Ethical Safety',
+     children: [
+       {
+         title: 'RIRT',
+         dataIndex: 'RIRT3',
+         width: '4%',
+         align: 'center',
+         render: (text) => text ? RoundFloat(text) : '-',
+         sorter: (a, b) => parseFloat(a.RIRT3 || 0) - parseFloat(b.RIRT3 || 0),
+       },
+       {
+         title: 'SIRT',
+         dataIndex: 'SIRT3',
+         width: '4%',
+         align: 'center',
+         render: (text) => text ? RoundFloat(text) : '-',
+         sorter: (a, b) => parseFloat(a.SIRT3 || 0) - parseFloat(b.SIRT3 || 0),
+       },
+       {
+         title: 'RIST',
+         dataIndex: 'RIST3',
+         width: '4%',
+         align: 'center',
+         render: (text) => text ? RoundFloat(text) : '-',
+         sorter: (a, b) => parseFloat(a.RIST3 || 0) - parseFloat(b.RIST3 || 0),
+       },
+       {
+         title: 'SIST',
+         dataIndex: 'SIST3',
+         width: '4%',
+         align: 'center',
+         render: (text) => text ? RoundFloat(text) : '-',
+         sorter: (a, b) => parseFloat(a.SIST3 || 0) - parseFloat(b.SIST3 || 0),
+       },
+     ],
+   },
+   {
+     title: 'Total (ASR)',
+     dataIndex: 'Total_ASR',
+     width: '4%',
+     align: 'center',
+     render: (text) => text ? RoundFloat(text) : '-',
+     sorter: (a, b) => parseFloat(a.Total_ASR || 0) - parseFloat(b.Total_ASR || 0),
+   },
+   {
+     title: 'ARR',
+     dataIndex: 'ARR',
+     width: '4%',
+     align: 'center',
+     render: (text) => text ? RoundFloat(text) : '-',
+     sorter: (a, b) => parseFloat(a.ARR || 0) - parseFloat(b.ARR || 0),
+   },
+ ];
 
 function SSATable() {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState('1');
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  // 根据当前选中的 tab 选择要显示的数据
-  const getTableData = () => {
-    return activeTab === '1' ? hardcodedDataBase : hardcodedDataHard;
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const fetchedData = activeTab === '1' ? hardcodedDataBase : hardcodedDataHard;
+        const processedData = fetchedData.map(item => ({
+          ...item,
+          RIRT1: parseFloat(item.RIRT1),
+          SIRT1: parseFloat(item.SIRT1),
+          RIST1: parseFloat(item.RIST1),
+          SIST1: parseFloat(item.SIST1),
+          RIRT2: parseFloat(item.RIRT2),
+          SIRT2: parseFloat(item.SIRT2),
+          RIST2: parseFloat(item.RIST2),
+          SIST2: parseFloat(item.SIST2),
+          RIRT3: parseFloat(item.RIRT3),
+          SIRT3: parseFloat(item.SIRT3),
+          RIST3: parseFloat(item.RIST3),
+          SIST3: parseFloat(item.SIST3),
+          Total_ASR: parseFloat(item.Total_ASR),
+          ARR: parseFloat(item.ARR),
+        }));
+        setData(processedData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [activeTab]);
 
   return (
     <div className="table-container">
       <Tabs activeKey={activeTab} onChange={setActiveTab}>
         <TabPane tab="USB-Base" key="1">
-          <div style={{ marginBottom: '16px' }}>
-            {t('dataset.base_desc')}
-          </div>
+          <div style={{ marginBottom: '16px' }}>{t('dataset.base_desc')}</div>
         </TabPane>
         <TabPane tab="USB-Hard" key="2">
-          <div style={{ marginBottom: '16px' }}>
-            {t('dataset.hard_desc')}
-          </div>
+          <div style={{ marginBottom: '16px' }}>{t('dataset.hard_desc')}</div>
         </TabPane>
       </Tabs>
 
       <Table
         columns={activityDetailColumns(t)}
-        dataSource={getTableData()}
+        dataSource={data}
         scroll={{ x: true }}
         pagination={false}
+        loading={loading}
       />
     </div>
   );

@@ -7,7 +7,6 @@ import { Route, HashRouter as Router, Routes } from 'react-router-dom';
 import MyFooter from './components/footer';
 import MyHeader from './components/header';
 import ScrollTopButton from './components/scrollTopButton';
-import MyTable from './components/table';
 import Description from './Description';
 import './index.css';
 import SafetyPage from './SafetyPage';
@@ -74,7 +73,7 @@ const App = () => {
               <Content className="container">
                 <Description lastUpdateTime={lastUpdateTime} />
               </Content>
-              <MyTable t={t} year={year} month={monthIndex} />
+              {/* 假设保留 SSATable */}
               <SSATable />
               <MyFooter />
             </>} />
