@@ -62,7 +62,7 @@ const App = () => {
             preview={false}
             style={{ zIndex: -1, position: 'absolute', top: 0 }}
             width={'100%'}
-            src={process.env.PUBLIC_URL + "/pics/Header BG.png"}
+            src={process.env.PUBLIC_URL + "/pics/HeaderBG.png"}
           />
           <ScrollTopButton />
           <MyHeader />
@@ -86,7 +86,7 @@ const App = () => {
               bottom: '0px',
             }}
             preview={false}
-            src={process.env.PUBLIC_URL + "/pics/Bubble BG.png"}
+            src={process.env.PUBLIC_URL + "/pics/BubbleBG.png"}
           />
         </Layout>
       </ConfigProvider>
