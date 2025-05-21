@@ -37,7 +37,7 @@ const MyHeader = () => {
     i18n.changeLanguage(lan);
     setLanguage(lan);
   };
-  
+
   const MyMenu = () => {
     return (
       <Menu style={{ background: 'rgba(255,255,255,0)' }} mode="horizontal">
@@ -63,20 +63,20 @@ const MyHeader = () => {
       </Menu>
     );
   };
-  
+
   return (
     <div className="header">
       <div className="header-content">
         <div className="header-logo">
-          {/* 删除的logo图片 */}
+
         </div>
         <div className="header-pc">
-          {/* <img
-            style={{ height: '48px', width: '48px', cursor: 'pointer' }}
-            onClick={changeLanguage}
-            src="/pics/translation.png"
-            alt={t('loading')}
-          /> */}
+          <img
+              style={{ height: '48px', width: '48px', cursor: 'pointer' }}
+              onClick={changeLanguage}
+              src={process.env.PUBLIC_URL + "/pics/translation.png"}
+              alt={t('loading')}
+           />
           <img
             alt="Q&A"
             style={{

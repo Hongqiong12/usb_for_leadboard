@@ -33,7 +33,7 @@ const Description = (props) => {
         }}>
         <Col>
           <span className="myFontColor" style={{ margin: '0 auto' }}>
-            {"安全事实问答能力评测集"}
+            {"多模态安全能力评测的数据集"}
           </span>
         </Col>
       </Row>
@@ -52,7 +52,7 @@ const Description = (props) => {
         <Col>
           <span className="myFontColor">
             {props.lastUpdateTime == null
-              ? "最近更新于2024年12月12日"
+              ? "最近更新于2025年5月12日"
               : t('desc.date', {
                   val: props.lastUpdateTime,
                   formatParams: {
