@@ -16,7 +16,7 @@ const fetchCSVData = async () => {
     const text = await response.text();
     const rows = text.split('\n').slice(1); // 去掉标题行
     return rows.map(row => {
-      const values = row.split('\t');
+      const values = row.split(',');
       return {
         rank: values[0],
         model: values[1],
@@ -55,18 +55,26 @@ const activityColumns = (object, t_month) => [
     width: '20%',
   },
   {
-    title: 'Total (ASR)',
-    dataIndex: 'total',
+    title: 'SR',
     align: 'center',
-    width: '15%',
-    render: (text) => text ? RoundFloat(text) : '-',
-  },
-  {
-    title: 'ARR',
-    dataIndex: 'arr',
-    align: 'center',
-    width: '15%',
-    render: (text) => text ? RoundFloat(text) : '-',
+    children: [
+      {
+        title: 'Total',
+        dataIndex: 'total',
+        align: 'center',
+        width: '15%',
+        className: 'col-total',
+        render: (text) => text ? RoundFloat(text) : '-',
+      },
+      {
+        title: 'RR',
+        dataIndex: 'arr',
+        align: 'center',
+        width: '15%',
+        className: 'col-rr',
+        render: (text) => text ? RoundFloat(text) : '-',
+      }
+    ]
   }
 ];
 const activityDetailColumns = (object, t_month) => [
@@ -83,123 +91,137 @@ const activityDetailColumns = (object, t_month) => [
     dataIndex: 'model',
     align: 'center',
     width: '15%',
+    fixed: 'left',
   },
   {
-    title: 'National Safety',
-    children: [
-      {
-        title: 'RIRT',
-        dataIndex: 'rirt1',
-        width: '8%',
-        align: 'center',
-        render: (text) => text ? RoundFloat(text) : '-',
-      },
-      {
-        title: 'SIRT',
-        dataIndex: 'sirt1',
-        width: '8%',
-        align: 'center',
-        render: (text) => text ? RoundFloat(text) : '-',
-      },
-      {
-        title: 'RIST',
-        dataIndex: 'rist1',
-        width: '8%',
-        align: 'center',
-        render: (text) => text ? RoundFloat(text) : '-',
-      },
-      {
-        title: 'SIST',
-        dataIndex: 'sist1',
-        width: '8%',
-        align: 'center',
-        render: (text) => text ? RoundFloat(text) : '-',
-      },
-    ],
-  },
-  {
-    title: 'Public Safety',
-    children: [
-      {
-        title: 'RIRT',
-        dataIndex: 'rirt2',
-        width: '8%',
-        align: 'center',
-        render: (text) => text ? RoundFloat(text) : '-',
-      },
-      {
-        title: 'SIRT',
-        dataIndex: 'sirt2',
-        width: '8%',
-        align: 'center',
-        render: (text) => text ? RoundFloat(text) : '-',
-      },
-      {
-        title: 'RIST',
-        dataIndex: 'rist2',
-        width: '8%',
-        align: 'center',
-        render: (text) => text ? RoundFloat(text) : '-',
-      },
-      {
-        title: 'SIST',
-        dataIndex: 'sist2',
-        width: '8%',
-        align: 'center',
-        render: (text) => text ? RoundFloat(text) : '-',
-      },
-    ],
-  },
-  {
-    title: 'Ethical Safety',
-    children: [
-      {
-        title: 'RIRT',
-        dataIndex: 'rirt3',
-        width: '8%',
-        align: 'center',
-        render: (text) => text ? RoundFloat(text) : '-',
-      },
-      {
-        title: 'SIRT',
-        dataIndex: 'sirt3',
-        width: '8%',
-        align: 'center',
-        render: (text) => text ? RoundFloat(text) : '-',
-      },
-      {
-        title: 'RIST',
-        dataIndex: 'rist3',
-        width: '8%',
-        align: 'center',
-        render: (text) => text ? RoundFloat(text) : '-',
-      },
-      {
-        title: 'SIST',
-        dataIndex: 'sist3',
-        width: '8%',
-        align: 'center',
-        render: (text) => text ? RoundFloat(text) : '-',
-      },
-    ],
-  },
-  {
-    title: 'Total (ASR)',
-    dataIndex: 'total',
-    width: '10%',
+    title: 'SR',
     align: 'center',
-    render: (text) => text ? RoundFloat(text) : '-',
-    sorter: (a, b) => parseFloat(a.total || 0) - parseFloat(b.total || 0),
+    children: [
+      {
+        title: 'National Safety',
+        align: 'center',
+        children: [
+          {
+            title: 'RIRT',
+            dataIndex: 'rirt1',
+            width: '5%',
+            align: 'center',
+            render: (text) => text ? RoundFloat(text) : '-',
+          },
+          {
+            title: 'SIRT',
+            dataIndex: 'sirt1',
+            width: '5%',
+            align: 'center',
+            render: (text) => text ? RoundFloat(text) : '-',
+          },
+          {
+            title: 'RIST',
+            dataIndex: 'rist1',
+            width: '5%',
+            align: 'center',
+            render: (text) => text ? RoundFloat(text) : '-',
+          },
+          {
+            title: 'SIST',
+            dataIndex: 'sist1',
+            width: '5%',
+            align: 'center',
+            render: (text) => text ? RoundFloat(text) : '-',
+          },
+        ],
+      },
+      {
+        title: 'Public Safety',
+        align: 'center',
+        children: [
+          {
+            title: 'RIRT',
+            dataIndex: 'rirt2',
+            width: '5%',
+            align: 'center',
+            render: (text) => text ? RoundFloat(text) : '-',
+          },
+          {
+            title: 'SIRT',
+            dataIndex: 'sirt2',
+            width: '5%',
+            align: 'center',
+            render: (text) => text ? RoundFloat(text) : '-',
+          },
+          {
+            title: 'RIST',
+            dataIndex: 'rist2',
+            width: '5%',
+            align: 'center',
+            render: (text) => text ? RoundFloat(text) : '-',
+          },
+          {
+            title: 'SIST',
+            dataIndex: 'sist2',
+            width: '5%',
+            align: 'center',
+            render: (text) => text ? RoundFloat(text) : '-',
+          },
+        ],
+      },
+      {
+        title: 'Ethical Safety',
+        align: 'center',
+        children: [
+          {
+            title: 'RIRT',
+            dataIndex: 'rirt3',
+            width: '5%',
+            align: 'center',
+            render: (text) => text ? RoundFloat(text) : '-',
+          },
+          {
+            title: 'SIRT',
+            dataIndex: 'sirt3',
+            width: '5%',
+            align: 'center',
+            render: (text) => text ? RoundFloat(text) : '-',
+          },
+          {
+            title: 'RIST',
+            dataIndex: 'rist3',
+            width: '5%',
+            align: 'center',
+            render: (text) => text ? RoundFloat(text) : '-',
+          },
+          {
+            title: 'SIST',
+            dataIndex: 'sist3',
+            width: '5%',
+            align: 'center',
+            render: (text) => text ? RoundFloat(text) : '-',
+          },
+        ],
+      },
+      {
+        title: 'Total',
+        dataIndex: 'total',
+        width: '6%',
+        align: 'center',
+        className: 'col-total',
+        render: (text) => text ? RoundFloat(text) : '-',
+        sorter: (a, b) => parseFloat(a.total || 0) - parseFloat(b.total || 0),
+      },
+    ],
   },
   {
-    title: 'ARR',
+    title: 'RR',
     dataIndex: 'arr',
-    width: '10%',
+    width: '6%',
     align: 'center',
+    className: 'col-rr',
     render: (text) => text ? RoundFloat(text) : '-',
     sorter: (a, b) => parseFloat(a.arr || 0) - parseFloat(b.arr || 0),
-  },
+  }
 ];
+
+
 const open_rankColumns = (object, t_month) => [
   {
     title: t('rank'),
@@ -520,15 +542,8 @@ function MyTable(props) {
     type,
   } = state;
   return (
-    <div className="table">
-      <div className="table-content">
-        <Card
-          style={{
-            width: '100%',
-            background: '#FFFFFF',
-            boxShadow: '0px 15px 20px 15px #F7F7FF',
-          }}
-        >
+    <div className="table-container scoreboard-light">
+        <Card>
           <TablePanel
             type={type}
             setState={updateDate}
@@ -541,6 +556,7 @@ function MyTable(props) {
             year={year}
           />
           <Table
+            className="usb-table"
             // Todo
             // scroll={{ x: 1500, y: 300 }}
             columns={columns}
@@ -555,24 +571,11 @@ function MyTable(props) {
               <Row justify="start">
                 <Col>
                   {showSize < data.length ? (
-                    <a
-                      style={{
-                        color: '#FFCC19',
-                        fontSize: '18px',
-                      }}
-                      onClick={expandData}
-                    >
-                      {t('showMore') + '>>'}
+                    <a className="btn-cta" onClick={expandData}>
+                      {t('showMore') + ' >>'}
                     </a>
                   ) : (
-                    <span
-                      style={{
-                        color: 'gray',
-                        fontSize: '18px',
-                      }}
-                    >
-                      {t('noMore')}
-                    </span>
+                    <span className="tag-muted">{t('noMore')}</span>
                   )}
                 </Col>
               </Row>
@@ -586,7 +589,6 @@ function MyTable(props) {
             </Col>
           </Row>
         </Card>
-      </div>
     </div>
   );
 }

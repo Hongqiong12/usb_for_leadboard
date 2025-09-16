@@ -16,47 +16,49 @@ const { TabPane } = Tabs;
 
 // USB-Base 数据集
 const hardcodedDataBase = [
-        { rank: '1', model: 'Claude35-sonnet2', url: 'https://www.anthropic.com/claude', RIRT1: '3.08', SIRT1: '4.53', RIST1: '32.62', SIST1: '32.35', RIRT2: '2.61', SIRT2: '2.95', RIST2: '20.53', SIST2: '31.95', RIRT3: '6.41', SIRT3: '5.24', RIST3: '28.13', SIST3: '34.11', Total_ASR: '15.57', ARR: '25.82' },
-        { rank: '2', model: 'Gemini-1.5-pro', url: 'https://deepmind.google/technologies/gemini/', RIRT1: '21.43', SIRT1: '31.14', RIST1: '59.93', SIST1: '71.08', RIRT2: '16.25', SIRT2: '24.13', RIST2: '49.53', SIST2: '65.55', RIRT3: '16.24', SIRT3: '32.78', RIST3: '42.74', SIST3: '56.73', Total_ASR: '37.83', ARR: '11.27' },
-        { rank: '3', model: 'GPT-4o', url: 'https://openai.com/gpt-4', RIRT1: '16.60', SIRT1: '24.90', RIST1: '65.53', SIST1: '72.02', RIRT2: '13.02', SIRT2: '12.45', RIST2: '52.71', SIST2: '74.04', RIRT3: '22.99', SIRT3: '28.35', RIST3: '60.23', SIST3: '72.44', Total_ASR: '40.93', ARR: '6.81' },
-        { rank: '4', model: 'Gemini-2.0-flash', url: 'https://deepmind.google/technologies/gemini/', RIRT1: '25.75', SIRT1: '39.02', RIST1: '81.59', SIST1: '78.50', RIRT2: '16.75', SIRT2: '21.95', RIST2: '64.70', SIST2: '76.54', RIRT3: '23.38', SIRT3: '35.81', RIST3: '64.07', SIST3: '74.60', Total_ASR: '46.51', ARR: '5.43' },
-        { rank: '5', model: 'Qwen2.5-VL-72B', url: 'https://huggingface.co/Qwen/Qwen2.5-VL-72B-Instruct', RIRT1: '30.64', SIRT1: '38.49', RIST1: '75.27', SIST1: '88.24', RIRT2: '25.47', SIRT2: '26.82', RIST2: '67.86', SIST2: '80.71', RIRT3: '25.31', SIRT3: '34.48', RIST3: '60.16', SIST3: '68.85', Total_ASR: '48.80', ARR: '1.43' },
-        { rank: '6', model: 'InternVL2-40B', url: 'https://huggingface.co/OpenInternVL/InternVL2-40B', RIRT1: '38.70', SIRT1: '45.20', RIST1: '78.65', SIST1: '85.05', RIRT2: '29.15', SIRT2: '29.74', RIST2: '72.82', SIST2: '81.94', RIRT3: '26.42', SIRT3: '33.87', RIST3: '66.67', SIST3: '72.93', Total_ASR: '51.72', ARR: '11.76' },
-        { rank: '7', model: 'Qwen2-VL-7B', url: 'https://huggingface.co/Qwen/Qwen2-VL-7B-Instruct', RIRT1: '41.28', SIRT1: '42.61', RIST1: '80.65', SIST1: '83.74', RIRT2: '31.39', SIRT2: '31.37', RIST2: '76.52', SIST2: '84.22', RIRT3: '34.92', SIRT3: '40.66', RIST3: '70.76', SIST3: '75.00', Total_ASR: '55.33', ARR: '6.27' },
-        { rank: '8', model: 'GLM-4V-9B', url: 'https://huggingface.co/THUDM/GLM-4V-9B', RIRT1: '43.29', SIRT1: '55.48', RIST1: '77.06', SIST1: '84.73', RIRT2: '37.63', SIRT2: '35.50', RIST2: '76.19', SIST2: '78.84', RIRT3: '38.39', SIRT3: '45.71', RIST3: '70.04', SIST3: '69.60', Total_ASR: '56.73', ARR: '5.99' },
-        { rank: '9', model: 'Qwen-VL-max', url: 'https://chat.qwen.ai/', RIRT1: '43.63', SIRT1: '49.00', RIST1: '86.13', SIST1: '88.70', RIRT2: '35.54', SIRT2: '34.52', RIST2: '75.45', SIST2: '85.41', RIRT3: '32.97', SIRT3: '41.95', RIST3: '69.20', SIST3: '78.78', Total_ASR: '56.87', ARR: '3.77' },
-        { rank: '10', model: 'Qwen2-VL-72B', url: 'https://huggingface.co/Qwen/Qwen2-VL-72B-Instruct', RIRT1: '39.60', SIRT1: '43.49', RIST1: '87.73', SIST1: '91.63', RIRT2: '34.63', SIRT2: '33.96', RIST2: '79.30', SIST2: '87.31', RIRT3: '35.50', SIRT3: '44.47', RIST3: '70.34', SIST3: '74.27', Total_ASR: '57.54', ARR: '1.87' },
-        { rank: '11', model: 'InternVL2-8B', url: 'https://huggingface.co/OpenGVLab/InternVL2-8B', RIRT1: '58.05', SIRT1: '57.79', RIST1: '87.36', SIST1: '87.25', RIRT2: '44.64', SIRT2: '40.50', RIST2: '79.13', SIST2: '82.88', RIRT3: '39.16', SIRT3: '39.48', RIST3: '70.09', SIST3: '72.19', Total_ASR: '59.73', ARR: '11.97' },
-        { rank: '12', model: 'Qwen2.5-VL-7B', url: 'https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct', RIRT1: '70.37', SIRT1: '75.86', RIST1: '86.69', SIST1: '94.09', RIRT2: '59.52', SIRT2: '59.15', RIST2: '79.35', SIST2: '88.15', RIRT3: '51.93', SIRT3: '61.62', RIST3: '71.88', SIST3: '75.73', Total_ASR: '69.76', ARR: '4.73' },
-        { rank: '13', model: 'LLAVA-v1.5-13B', url: 'https://huggingface.co/liuhaotian/llava-v1.5-13b', RIRT1: '63.39', SIRT1: '69.18', RIST1: '90.97', SIST1: '94.53', RIRT2: '62.45', SIRT2: '62.25', RIST2: '88.28', SIST2: '88.77', RIRT3: '51.90', SIRT3: '61.97', RIST3: '81.01', SIST3: '76.41', Total_ASR: '72.72', ARR: '11.39' },
-        { rank: '14', model: 'MiniCPM-V 2.6', url: 'https://huggingface.co/openbmb/MiniCPM-V', RIRT1: '78.60', SIRT1: '76.98', RIST1: '88.13', SIST1: '86.21', RIRT2: '73.75', SIRT2: '70.18', RIST2: '76.77', SIST2: '85.78', RIRT3: '62.55', SIRT3: '69.05', RIST3: '68.97', SIST3: '72.02', Total_ASR: '73.86', ARR: '6.43' },
-        { rank: '15', model: 'LLAVA-v1.5-7B', url: 'https://huggingface.co/liuhaotian/llava-v1.5-7b', RIRT1: '80.48', SIRT1: '81.31', RIST1: '87.27', SIST1: '87.19', RIRT2: '82.76', SIRT2: '80.87', RIST2: '87.53', SIST2: '85.79', RIRT3: '77.46', SIRT3: '81.15', RIST3: '84.65', SIST3: '80.55', Total_ASR: '83.07', ARR: '8.54' },
-        { rank: '16', model: 'VILA-13B', url: 'https://huggingface.co/Efficient-Large-Model/VILA-13b', RIRT1: '91.28', SIRT1: '89.62', RIST1: '95.67', SIST1: '90.69', RIRT2: '90.81', SIRT2: '89.27', RIST2: '89.75', SIST2: '87.92', RIRT3: '85.06', SIRT3: '86.21', RIST3: '85.57', SIST3: '78.59', Total_ASR: '87.79', ARR: '22.34' },
-        { rank: '17', model: 'VILA-7B', url: 'https://huggingface.co/Efficient-Large-Model/VILA-7b', RIRT1: '92.28', SIRT1: '85.91', RIST1: '94.95', SIST1: '91.67', RIRT2: '89.05', SIRT2: '87.53', RIST2: '91.48', SIST2: '90.22', RIRT3: '89.78', SIRT3: '88.93', RIST3: '90.58', SIST3: '84.14', Total_ASR: '89.35', ARR: '32.51' }
+        { rank: '1', model: 'Claude3.5-Sonnet2', url: 'https://www.anthropic.com/claude', RIRT1: '97.12', SIRT1: '95.15', RIST1: '66.91', SIST1: '67.01', RIRT2: '97.16', SIRT2: '96.86', RIST2: '79.70', SIST2: '67.68', RIRT3: '93.53', SIRT3: '94.60', RIST3: '71.82', SIST3: '65.94', Total_ASR: '82.79', ARR: '25.82' },
+        { rank: '2', model: 'Gemini-1.5-Pro', url: 'https://deepmind.google/technologies/gemini/', RIRT1: '78.93', SIRT1: '68.52', RIST1: '39.26', SIST1: '27.84', RIRT2: '84.36', SIRT2: '75.29', RIST2: '50.49', SIST2: '34.58', RIRT3: '83.51', SIRT3: '67.88', RIST3: '57.06', SIST3: '43.57', Total_ASR: '59.27', ARR: '11.27' },
+        { rank: '3', model: 'Gemini-2.0-Flash', url: 'https://deepmind.google/technologies/gemini/', RIRT1: '74.39', SIRT1: '59.70', RIST1: '17.78', SIST1: '20.94', RIRT2: '83.16', SIRT2: '77.32', RIST2: '35.52', SIST2: '23.60', RIRT3: '76.35', SIRT3: '64.52', RIST3: '35.83', SIST3: '25.41', Total_ASR: '49.54', ARR: '5.43' },
+        { rank: '4', model: 'GPT-4o', url: 'https://openai.com/gpt-4', RIRT1: '84.15', SIRT1: '74.46', RIST1: '35.41', SIST1: '29.51', RIRT2: '87.16', SIRT2: '87.16', RIST2: '47.51', SIST2: '26.10', RIRT3: '77.04', SIRT3: '71.58', RIST3: '39.81', SIST3: '27.49', Total_ASR: '57.28', ARR: '6.81' },
+        { rank: '5', model: 'Qwen-VL-Max', url: 'https://chat.qwen.ai/', RIRT1: '55.95', SIRT1: '50.63', RIST1: '13.30', SIST1: '11.76', RIRT2: '65.05', SIRT2: '65.48', RIST2: '24.79', SIST2: '14.94', RIRT3: '66.74', SIRT3: '58.24', RIST3: '30.57', SIST3: '21.19', Total_ASR: '39.89', ARR: '3.77' },
+        { rank: '6', model: 'VILA-13B', url: 'https://huggingface.co/Efficient-Large-Model/VILA-13b', RIRT1: '8.80', SIRT1: '10.37', RIST1: '4.07', SIST1: '9.28', RIRT2: '9.22', SIRT2: '11.04', RIST2: '10.53', SIST2: '12.31', RIRT3: '14.94', SIRT3: '13.79', RIST3: '14.15', SIST3: '21.25', Total_ASR: '11.65', ARR: '22.34' },
+        { rank: '7', model: 'VILA-7B', url: 'https://huggingface.co/Efficient-Large-Model/VILA-7b', RIRT1: '7.75', SIRT1: '13.97', RIST1: '4.81', SIST1: '8.25', RIRT2: '11.09', SIRT2: '12.58', RIST2: '8.76', SIST2: '10.09', RIRT3: '10.33', SIRT3: '11.28', RIST3: '9.08', SIST3: '15.50', Total_ASR: '10.29', ARR: '32.51' },
+        { rank: '8', model: 'LLAVA-v1.5-13B', url: 'https://huggingface.co/liuhaotian/llava-v1.5-13b', RIRT1: '36.88', SIRT1: '30.40', RIST1: '9.26', SIST1: '5.76', RIRT2: '38.17', SIRT2: '37.67', RIST2: '11.98', SIST2: '11.28', RIRT3: '47.84', SIRT3: '38.14', RIST3: '18.81', SIST3: '23.67', Total_ASR: '25.82', ARR: '11.39' },
+        { rank: '9', model: 'LLAVA-v1.5-7B', url: 'https://huggingface.co/liuhaotian/llava-v1.5-7b', RIRT1: '19.78', SIRT1: '18.89', RIST1: '13.06', SIST1: '12.95', RIRT2: '17.16', SIRT2: '19.74', RIST2: '12.32', SIST2: '14.28', RIRT3: '22.64', SIRT3: '18.91', RIST3: '15.19', SIST3: '19.54', Total_ASR: '17.04', ARR: '8.54' },
+        { rank: '10', model: 'MiniCPM-V 2.6', url: 'https://huggingface.co/openbmb/MiniCPM-V', RIRT1: '21.05', SIRT1: '23.16', RIST1: '11.44', SIST1: '14.51', RIRT2: '27.40', SIRT2: '29.80', RIST2: '23.57', SIST2: '14.03', RIRT3: '36.99', SIRT3: '31.41', RIST3: '31.04', SIST3: '27.82', Total_ASR: '24.35', ARR: '6.43' },
+        { rank: '11', model: 'InternVL2-40B', url: 'https://huggingface.co/OpenInternVL/InternVL2-40B', RIRT1: '61.15', SIRT1: '54.20', RIST1: '21.54', SIST1: '14.52', RIRT2: '71.25', SIRT2: '69.84', RIST2: '27.78', SIST2: '18.09', RIRT3: '73.19', SIRT3: '66.02', RIST3: '33.39', SIST3: '27.15', Total_ASR: '44.84', ARR: '11.76' },
+        { rank: '12', model: 'InternVL2-8B', url: 'https://huggingface.co/OpenGVLab/InternVL2-8B', RIRT1: '40.85', SIRT1: '40.00', RIST1: '12.55', SIST1: '12.37', RIRT2: '55.24', SIRT2: '58.82', RIST2: '21.30', SIST2: '16.81', RIRT3: '60.69', SIRT3: '60.50', RIST3: '29.71', SIST3: '27.44', Total_ASR: '36.36', ARR: '11.97' },
+        { rank: '13', model: 'Qwen2.5-VL-72B', url: 'https://huggingface.co/Qwen/Qwen2.5-VL-72B-Instruct', RIRT1: '68.90', SIRT1: '60.66', RIST1: '24.26', SIST1: '11.34', RIRT2: '74.83', SIRT2: '72.58', RIST2: '32.52', SIST2: '19.61', RIRT3: '74.18', SIRT3: '65.40', RIST3: '39.82', SIST3: '30.94', Total_ASR: '47.92', ARR: '1.43' },
+        { rank: '14', model: 'Qwen2.5-VL-7B', url: 'https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct', RIRT1: '30.04', SIRT1: '23.25', RIST1: '13.28', SIST1: '6.19', RIRT2: '41.41', SIRT2: '40.23', RIST2: '20.96', SIST2: '12.13', RIRT3: '47.47', SIRT3: '38.58', RIST3: '28.09', SIST3: '24.15', Total_ASR: '27.15', ARR: '4.73' },
+        { rank: '15', model: 'Qwen2-VL-72B', url: 'https://huggingface.co/Qwen/Qwen2-VL-72B-Instruct', RIRT1: '60.56', SIRT1: '55.68', RIST1: '11.48', SIST1: '8.81', RIRT2: '65.90', SIRT2: '65.64', RIST2: '20.95', SIST2: '12.88', RIRT3: '64.27', SIRT3: '56.28', RIST3: '29.18', SIST3: '25.54', Total_ASR: '39.76', ARR: '1.87' },
+        { rank: '16', model: 'Qwen2-VL-7B', url: 'https://huggingface.co/Qwen/Qwen2-VL-7B-Instruct', RIRT1: '58.45', SIRT1: '56.25', RIST1: '19.12', SIST1: '17.01', RIRT2: '69.01', SIRT2: '67.71', RIST2: '23.76', SIST2: '15.59', RIRT3: '65.05', SIRT3: '59.38', RIST3: '29.42', SIST3: '24.77', Total_ASR: '42.13', ARR: '6.27' },
+        { rank: '17', model: 'GLM-4V-9B', url: 'https://huggingface.co/THUDM/GLM-4V-9B', RIRT1: '57.75', SIRT1: '44.69', RIST1: '23.16', SIST1: '15.03', RIRT2: '62.49', SIRT2: '63.29', RIST2: '24.56', SIST2: '21.26', RIRT3: '61.08', SIRT3: '54.81', RIST3: '29.84', SIST3: '30.18', Total_ASR: '40.68', ARR: '5.99' }
       ];
 
 // USB-Hard 数据集
 const hardcodedDataHard = [
-  { rank: '1', model: 'Claude35-sonnet2', url: 'https://www.anthropic.com/claude', RIRT1: '8.11', SIRT1: '8.57', RIST1: '29.33', SIST1: '31.75', RIRT2: '4.18', SIRT2: '5.04', RIST2: '23.11', SIST2: '29.45', RIRT3: '10.09', SIRT3: '11.00', RIST3: '32.72', SIST3: '33.54', Total_ASR: '18.31', ARR: '25.82' },
-  { rank: '2', model: 'GPT-4o', url: 'https://openai.com/gpt-4', RIRT1: '22.86', SIRT1: '36.92', RIST1: '68.49', SIST1: '72.58', RIRT2: '31.00', SIRT2: '41.46', RIST2: '65.27', SIST2: '77.49', RIRT3: '37.75', SIRT3: '69.12', RIST3: '67.39', SIST3: '80.63', Total_ASR: '58.01', ARR: '6.81' },
-  { rank: '3', model: 'Gemini-1.5-pro', url: 'https://deepmind.google/technologies/gemini/', RIRT1: '40.54', SIRT1: '72.86', RIST1: '60.00', SIST1: '85.71', RIRT2: '50.00', SIRT2: '71.70', RIST2: '72.95', SIST2: '81.39', RIRT3: '32.22', SIRT3: '60.33', RIST3: '55.56', SIST3: '70.57', Total_ASR: '63.07', ARR: '11.27' },
-  { rank: '4', model: 'Gemini-2.0-flash', url: 'https://deepmind.google/technologies/gemini/', RIRT1: '59.46', SIRT1: '80.00', RIST1: '78.67', SIST1: '93.65', RIRT2: '48.61', SIRT2: '65.95', RIST2: '84.87', SIST2: '85.89', RIRT3: '43.47', SIRT3: '67.33', RIST3: '78.40', SIST3: '84.49', Total_ASR: '70.71', ARR: '5.43' },
-  { rank: '5', model: 'Qwen2.5-VL-72B', url: 'https://huggingface.co/Qwen/Qwen2.5-VL-72B-Instruct', RIRT1: '56.76', SIRT1: '89.86', RIST1: '76.00', SIST1: '92.06', RIRT2: '68.26', SIRT2: '85.82', RIST2: '86.16', SIST2: '88.75', RIRT3: '52.13', SIRT3: '80.20', RIST3: '70.37', SIST3: '85.08', Total_ASR: '77.85', ARR: '1.43' },
-  { rank: '6', model: 'InternVL2-40B', url: 'https://huggingface.co/OpenInternVL/InternVL2-40B', RIRT1: '68.92', SIRT1: '90.91', RIST1: '83.33', SIST1: '93.10', RIRT2: '75.73', SIRT2: '89.39', RIST2: '92.11', SIST2: '91.92', RIRT3: '53.02', SIRT3: '79.11', RIST3: '78.14', SIST3: '81.19', Total_ASR: '81.43', ARR: '11.76' },
-  { rank: '7', model: 'Qwen2-VL-7B', url: 'https://huggingface.co/Qwen/Qwen2-VL-7B-Instruct', RIRT1: '72.97', SIRT1: '84.06', RIST1: '86.67', SIST1: '88.89', RIRT2: '73.51', SIRT2: '88.25', RIST2: '92.84', SIST2: '92.81', RIRT3: '56.23', SIRT3: '76.33', RIST3: '81.48', SIST3: '83.86', Total_ASR: '81.84', ARR: '6.27' },
-  { rank: '8', model: 'InternVL2-8B', url: 'https://huggingface.co/OpenGVLab/InternVL2-8B', RIRT1: '83.56', SIRT1: '98.55', RIST1: '86.11', SIST1: '98.41', RIRT2: '78.53', SIRT2: '89.00', RIST2: '90.68', SIST2: '90.93', RIRT3: '61.39', SIRT3: '79.25', RIST3: '78.23', SIST3: '79.22', Total_ASR: '82.76', ARR: '11.97' },
-  { rank: '9', model: 'GLM-4V-9B', url: 'https://huggingface.co/THUDM/GLM-4V-9B', RIRT1: '64.86', SIRT1: '92.86', RIST1: '85.33', SIST1: '95.24', RIRT2: '81.40', SIRT2: '89.93', RIST2: '92.02', SIST2: '89.37', RIRT3: '62.20', SIRT3: '83.00', RIST3: '81.79', SIST3: '79.05', Total_ASR: '83.42', ARR: '5.99' },
-  { rank: '10', model: 'Qwen-VL-max', url: 'https://chat.qwen.ai/', RIRT1: '78.87', SIRT1: '93.34', RIST1: '85.71', SIST1: '95.08', RIRT2: '79.45', SIRT2: '88.97', RIST2: '92.79', SIST2: '94.58', RIRT3: '58.39', SIRT3: '84.70', RIST3: '81.19', SIST3: '87.71', Total_ASR: '84.77', ARR: '3.77' },
-  { rank: '11', model: 'Qwen2-VL-72B', url: 'https://huggingface.co/Qwen/Qwen2-VL-72B-Instruct', RIRT1: '67.12', SIRT1: '92.86', RIST1: '92.00', SIST1: '95.24', RIRT2: '81.67', SIRT2: '91.50', RIST2: '92.84', SIST2: '93.21', RIRT3: '59.57', SIRT3: '86.00', RIST3: '81.79', SIST3: '85.40', Total_ASR: '85.10', ARR: '1.87' },
-  { rank: '12', model: 'Qwen2.5-VL-7B', url: 'https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct', RIRT1: '86.49', SIRT1: '97.10', RIST1: '82.67', SIST1: '96.72', RIRT2: '88.28', SIRT2: '95.87', RIST2: '92.83', SIST2: '94.07', RIRT3: '76.99', SIRT3: '91.64', RIST3: '81.00', SIST3: '83.86', Total_ASR: '88.96', ARR: '4.73' },
-  { rank: '13', model: 'LLAVA-v1.5-7B', url: 'https://huggingface.co/liuhaotian/llava-v1.5-7b', RIRT1: '89.19', SIRT1: '91.43', RIST1: '90.54', SIST1: '83.87', RIRT2: '90.42', SIRT2: '94.96', RIST2: '89.78', SIST2: '91.36', RIRT3: '86.02', SIRT3: '90.67', RIST3: '85.49', SIST3: '85.40', Total_ASR: '89.57', ARR: '8.54' },
-  { rank: '14', model: 'MiniCPM-V 2.6', url: 'https://huggingface.co/openbmb/MiniCPM-V', RIRT1: '93.24', SIRT1: '98.57', RIST1: '90.67', SIST1: '93.65', RIRT2: '92.83', SIRT2: '98.08', RIST2: '90.18', SIST2: '94.67', RIRT3: '83.28', SIRT3: '93.33', RIST3: '80.25', SIST3: '81.96', Total_ASR: '90.40', ARR: '6.43' },
-  { rank: '15', model: 'LLAVA-v1.5-13B', url: 'https://huggingface.co/liuhaotian/llava-v1.5-13b', RIRT1: '94.59', SIRT1: '98.57', RIST1: '93.33', SIST1: '96.77', RIRT2: '90.38', SIRT2: '96.84', RIST2: '94.44', SIST2: '93.03', RIRT3: '78.53', SIRT3: '94.00', RIST3: '85.49', SIST3: '84.03', Total_ASR: '90.75', ARR: '11.39' },
-  { rank: '16', model: 'VILA-13B', url: 'https://huggingface.co/Efficient-Large-Model/VILA-13b', RIRT1: '97.30', SIRT1: '97.14', RIST1: '92.00', SIST1: '92.06', RIRT2: '95.41', SIRT2: '97.12', RIST2: '93.46', SIST2: '93.05', RIRT3: '92.40', SIRT3: '96.67', RIST3: '87.96', SIST3: '85.44', Total_ASR: '93.15', ARR: '22.34' },
-  { rank: '17', model: 'VILA-7B', url: 'https://huggingface.co/Efficient-Large-Model/VILA-7b', RIRT1: '94.59', SIRT1: '98.57', RIST1: '94.67', SIST1: '95.24', RIRT2: '95.02', SIRT2: '96.64', RIST2: '94.26', SIST2: '94.89', RIRT3: '95.14', SIRT3: '96.33', RIST3: '87.35', SIST3: '88.61', Total_ASR: '93.97', ARR: '32.51' }
+  // Closed-source Commercial MLLMs
+  { rank: '1', model: 'Claude35-Sonnet2', url: 'https://www.anthropic.com/claude', RIRT1: '91.78', SIRT1: '91.43', RIST1: '70.83', SIST1: '67.21', RIRT2: '95.60', SIRT2: '94.75', RIST2: '76.55', SIST2: '69.31', RIRT3: '90.12', SIRT3: '88.70', RIST3: '66.98', SIST3: '66.77', Total_ASR: '80.84', ARR: '25.82' },
+  { rank: '2', model: 'Gemini-1.5-Pro', url: 'https://deepmind.google/technologies/gemini/', RIRT1: '58.90', SIRT1: '27.14', RIST1: '41.67', SIST1: '13.11', RIRT2: '51.87', SIRT2: '28.35', RIST2: '27.35', SIST2: '18.67', RIRT3: '67.79', SIRT3: '39.04', RIST3: '44.34', SIST3: '29.39', Total_ASR: '37.30', ARR: '11.27' },
+  { rank: '3', model: 'Gemini-2.0-Flash', url: 'https://deepmind.google/technologies/gemini/', RIRT1: '41.10', SIRT1: '20.00', RIST1: '22.22', SIST1: '4.92', RIRT2: '53.19', SIRT2: '34.12', RIST2: '15.14', SIST2: '14.16', RIRT3: '56.44', SIRT3: '32.19', RIST3: '21.07', SIST3: '15.65', Total_ASR: '27.52', ARR: '5.43' },
+  { rank: '4', model: 'GPT-4o', url: 'https://openai.com/gpt-4', RIRT1: '78.26', SIRT1: '63.08', RIST1: '31.43', SIST1: '28.33', RIRT2: '69.49', SIRT2: '57.57', RIST2: '35.15', SIST2: '22.99', RIRT3: '62.00', SIRT3: '30.32', RIST3: '32.59', SIST3: '19.23', Total_ASR: '44.20', ARR: '6.81' },
+  { rank: '5', model: 'Qwen-VL-Max', url: 'https://chat.qwen.ai/', RIRT1: '21.43', SIRT1: '6.06', RIST1: '14.71', SIST1: '5.08', RIRT2: '22.25', SIRT2: '11.80', RIST2: '7.51', SIST2: '5.47', RIRT3: '41.55', SIRT3: '15.27', RIST3: '18.52', SIST3: '12.37', Total_ASR: '15.17', ARR: '3.77' },
+  // Open-source MLLMs
+  { rank: '6', model: 'VILA-13B', url: 'https://huggingface.co/Efficient-Large-Model/VILA-13b', RIRT1: '2.74', SIRT1: '2.86', RIST1: '8.33', SIST1: '6.56', RIRT2: '4.85', SIRT2: '3.16', RIST2: '6.82', SIST2: '7.30', RIRT3: '7.67', SIRT3: '2.74', RIST3: '11.95', SIST3: '14.70', Total_ASR: '6.64', ARR: '22.34' },
+  { rank: '7', model: 'VILA-7B', url: 'https://huggingface.co/Efficient-Large-Model/VILA-7b', RIRT1: '5.48', SIRT1: '1.43', RIST1: '5.56', SIST1: '4.92', RIRT2: '5.27', SIRT2: '3.41', RIST2: '5.98', SIST2: '5.15', RIRT3: '4.91', SIRT3: '3.42', RIST3: '12.58', SIST3: '11.50', Total_ASR: '5.80', ARR: '32.51' },
+  { rank: '8', model: 'LLAVA-v1.5-13B', url: 'https://huggingface.co/liuhaotian/llava-v1.5-13b', RIRT1: '5.48', SIRT1: '1.43', RIST1: '6.94', SIST1: '3.33', RIRT2: '10.18', SIRT2: '3.46', RIST2: '5.79', SIST2: '6.71', RIRT3: '21.36', SIRT3: '5.82', RIST3: '13.84', SIST3: '16.08', Total_ASR: '8.37', ARR: '11.39' },
+  { rank: '9', model: 'LLAVA-v1.5-7B', url: 'https://huggingface.co/liuhaotian/llava-v1.5-7b', RIRT1: '10.96', SIRT1: '8.57', RIST1: '9.86', SIST1: '16.67', RIRT2: '9.47', SIRT2: '4.72', RIST2: '10.02', SIST2: '9.07', RIRT3: '14.11', SIRT3: '9.59', RIST3: '14.15', SIST3: '14.74', Total_ASR: '10.99', ARR: '8.54' },
+  { rank: '10', model: 'MiniCPM-V 2.6', url: 'https://huggingface.co/openbmb/MiniCPM-V', RIRT1: '6.85', SIRT1: '1.43', RIST1: '9.72', SIST1: '6.56', RIRT2: '7.91', SIRT2: '2.10', RIST2: '10.02', SIST2: '5.16', RIRT3: '16.87', SIRT3: '6.51', RIST3: '19.18', SIST3: '18.21', Total_ASR: '9.21', ARR: '6.43' },
+  { rank: '11', model: 'InternVL2-40B', url: 'https://huggingface.co/OpenInternVL/InternVL2-40B', RIRT1: '30.14', SIRT1: '9.09', RIST1: '15.94', SIST1: '5.36', RIRT2: '25.92', SIRT2: '11.02', RIST2: '8.22', SIST2: '8.28', RIRT3: '46.79', SIRT3: '21.05', RIST3: '21.64', SIST3: '18.67', Total_ASR: '18.51', ARR: '11.76' },
+  { rank: '12', model: 'InternVL2-8B', url: 'https://huggingface.co/OpenGVLab/InternVL2-8B', RIRT1: '16.67', SIRT1: '1.45', RIST1: '12.68', SIST1: '1.64', RIRT2: '22.57', SIRT2: '11.78', RIST2: '9.51', SIST2: '8.80', RIRT3: '38.98', SIRT3: '20.98', RIST3: '20.90', SIST3: '20.66', Total_ASR: '15.55', ARR: '11.97' },
+  { rank: '13', model: 'Qwen2.5-VL-72B', url: 'https://huggingface.co/Qwen/Qwen2.5-VL-72B-Instruct', RIRT1: '43.84', SIRT1: '10.14', RIST1: '22.22', SIST1: '8.20', RIRT2: '33.70', SIRT2: '13.91', RIST2: '14.44', SIST2: '11.59', RIRT3: '48.00', SIRT3: '18.97', RIST3: '29.25', SIST3: '15.06', Total_ASR: '22.44', ARR: '1.43' },
+  { rank: '14', model: 'Qwen2.5-VL-7B', url: 'https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct', RIRT1: '13.70', SIRT1: '2.90', RIST1: '18.06', SIST1: '3.39', RIRT2: '12.69', SIRT2: '4.24', RIST2: '7.48', SIST2: '6.22', RIRT3: '23.22', SIRT3: '8.25', RIST3: '18.41', SIST3: '16.29', Total_ASR: '11.24', ARR: '4.73' },
+  { rank: '15', model: 'Qwen2-VL-72B', url: 'https://huggingface.co/Qwen/Qwen2-VL-72B-Instruct', RIRT1: '33.33', SIRT1: '7.14', RIST1: '8.33', SIST1: '4.92', RIRT2: '19.12', SIRT2: '8.95', RIST2: '7.46', SIST2: '6.91', RIRT3: '40.49', SIRT3: '13.70', RIST3: '18.24', SIST3: '14.74', Total_ASR: '15.28', ARR: '1.87' },
+  { rank: '16', model: 'Qwen2-VL-7B', url: 'https://huggingface.co/Qwen/Qwen2-VL-7B-Instruct', RIRT1: '26.03', SIRT1: '15.94', RIST1: '12.50', SIST1: '11.48', RIRT2: '27.91', SIRT2: '11.81', RIST2: '7.46', SIST2: '7.51', RIRT3: '43.87', SIRT3: '23.63', RIST3: '17.92', SIST3: '16.29', Total_ASR: '18.53', ARR: '6.27' },
+  { rank: '17', model: 'GLM-4V-9B', url: 'https://huggingface.co/THUDM/GLM-4V-9B', RIRT1: '35.62', SIRT1: '7.14', RIST1: '13.89', SIST1: '4.92', RIRT2: '19.60', SIRT2: '10.50', RIST2: '8.32', SIST2: '10.52', RIRT3: '37.85', SIRT3: '17.12', RIST3: '17.92', SIST3: '21.15', Total_ASR: '17.05', ARR: '5.99' }
 ];
 
-const activityDetailColumns = (t) => [
+const activityDetailColumns = (t, activeTab) => [
    {
        title: t('rank'),
        dataIndex: 'rank',
@@ -75,126 +77,135 @@ const activityDetailColumns = (t) => [
        ),
      },
    {
-     title: 'National Safety',
-     children: [
-       {
-         title: 'RIRT',
-         dataIndex: 'RIRT1',
-         width: '4%',
-         align: 'center',
-         render: (text) => text ? RoundFloat(text) : '-',
-         sorter: (a, b) => parseFloat(a.RIRT1 || 0) - parseFloat(b.RIRT1 || 0),
-       },
-       {
-         title: 'SIRT',
-         dataIndex: 'SIRT1',
-         width: '4%',
-         align: 'center',
-         render: (text) => text ? RoundFloat(text) : '-',
-         sorter: (a, b) => parseFloat(a.SIRT1 || 0) - parseFloat(b.SIRT1 || 0),
-       },
-       {
-         title: 'RIST',
-         dataIndex: 'RIST1',
-         width: '4%',
-         align: 'center',
-         render: (text) => text ? RoundFloat(text) : '-',
-         sorter: (a, b) => parseFloat(a.RIST1 || 0) - parseFloat(b.RIST1 || 0),
-       },
-       {
-         title: 'SIST',
-         dataIndex: 'SIST1',
-         width: '4%',
-         align: 'center',
-         render: (text) => text ? RoundFloat(text) : '-',
-         sorter: (a, b) => parseFloat(a.SIST1 || 0) - parseFloat(b.SIST1 || 0),
-       },
-     ],
-   },
-   {
-     title: 'Public Safety',
-     children: [
-       {
-         title: 'RIRT',
-         dataIndex: 'RIRT2',
-         width: '4%',
-         align: 'center',
-         render: (text) => text ? RoundFloat(text) : '-',
-         sorter: (a, b) => parseFloat(a.RIRT2 || 0) - parseFloat(b.RIRT2 || 0),
-       },
-       {
-         title: 'SIRT',
-         dataIndex: 'SIRT2',
-         width: '4%',
-         align: 'center',
-         render: (text) => text ? RoundFloat(text) : '-',
-         sorter: (a, b) => parseFloat(a.SIRT2 || 0) - parseFloat(b.SIRT2 || 0),
-       },
-       {
-         title: 'RIST',
-         dataIndex: 'RIST2',
-         width: '4%',
-         align: 'center',
-         render: (text) => text ? RoundFloat(text) : '-',
-         sorter: (a, b) => parseFloat(a.RIST2 || 0) - parseFloat(b.RIST2 || 0),
-       },
-       {
-         title: 'SIST',
-         dataIndex: 'SIST2',
-         width: '4%',
-         align: 'center',
-         render: (text) => text ? RoundFloat(text) : '-',
-         sorter: (a, b) => parseFloat(a.SIST2 || 0) - parseFloat(b.SIST2 || 0),
-       },
-     ],
-   },
-   {
-     title: 'Ethical Safety',
-     children: [
-       {
-         title: 'RIRT',
-         dataIndex: 'RIRT3',
-         width: '4%',
-         align: 'center',
-         render: (text) => text ? RoundFloat(text) : '-',
-         sorter: (a, b) => parseFloat(a.RIRT3 || 0) - parseFloat(b.RIRT3 || 0),
-       },
-       {
-         title: 'SIRT',
-         dataIndex: 'SIRT3',
-         width: '4%',
-         align: 'center',
-         render: (text) => text ? RoundFloat(text) : '-',
-         sorter: (a, b) => parseFloat(a.SIRT3 || 0) - parseFloat(b.SIRT3 || 0),
-       },
-       {
-         title: 'RIST',
-         dataIndex: 'RIST3',
-         width: '4%',
-         align: 'center',
-         render: (text) => text ? RoundFloat(text) : '-',
-         sorter: (a, b) => parseFloat(a.RIST3 || 0) - parseFloat(b.RIST3 || 0),
-       },
-       {
-         title: 'SIST',
-         dataIndex: 'SIST3',
-         width: '4%',
-         align: 'center',
-         render: (text) => text ? RoundFloat(text) : '-',
-         sorter: (a, b) => parseFloat(a.SIST3 || 0) - parseFloat(b.SIST3 || 0),
-       },
-     ],
-   },
-   {
-     title: 'Total (ASR)',
-     dataIndex: 'Total_ASR',
-     width: '4%',
+     title: 'Safety Rate (%)',
      align: 'center',
-     render: (text) => text ? RoundFloat(text) : '-',
-     sorter: (a, b) => parseFloat(a.Total_ASR || 0) - parseFloat(b.Total_ASR || 0),
+     children: [
+       {
+         title: 'National Safety',
+         align: 'center',
+         children: [
+           {
+             title: 'RIRT',
+             dataIndex: 'RIRT1',
+             width: '4%',
+             align: 'center',
+             render: (text) => text ? RoundFloat(text) : '-',
+             sorter: (a, b) => parseFloat(a.RIRT1 || 0) - parseFloat(b.RIRT1 || 0),
+           },
+           {
+             title: 'SIRT',
+             dataIndex: 'SIRT1',
+             width: '4%',
+             align: 'center',
+             render: (text) => text ? RoundFloat(text) : '-',
+             sorter: (a, b) => parseFloat(a.SIRT1 || 0) - parseFloat(b.SIRT1 || 0),
+           },
+           {
+             title: 'RIST',
+             dataIndex: 'RIST1',
+             width: '4%',
+             align: 'center',
+             render: (text) => text ? RoundFloat(text) : '-',
+             sorter: (a, b) => parseFloat(a.RIST1 || 0) - parseFloat(b.RIST1 || 0),
+           },
+           {
+             title: 'SIST',
+             dataIndex: 'SIST1',
+             width: '4%',
+             align: 'center',
+             render: (text) => text ? RoundFloat(text) : '-',
+             sorter: (a, b) => parseFloat(a.SIST1 || 0) - parseFloat(b.SIST1 || 0),
+           },
+         ],
+       },
+       {
+         title: 'Public Safety',
+         align: 'center',
+         children: [
+           {
+             title: 'RIRT',
+             dataIndex: 'RIRT2',
+             width: '4%',
+             align: 'center',
+             render: (text) => text ? RoundFloat(text) : '-',
+             sorter: (a, b) => parseFloat(a.RIRT2 || 0) - parseFloat(b.RIRT2 || 0),
+           },
+           {
+             title: 'SIRT',
+             dataIndex: 'SIRT2',
+             width: '4%',
+             align: 'center',
+             render: (text) => text ? RoundFloat(text) : '-',
+             sorter: (a, b) => parseFloat(a.SIRT2 || 0) - parseFloat(b.SIRT2 || 0),
+           },
+           {
+             title: 'RIST',
+             dataIndex: 'RIST2',
+             width: '4%',
+             align: 'center',
+             render: (text) => text ? RoundFloat(text) : '-',
+             sorter: (a, b) => parseFloat(a.RIST2 || 0) - parseFloat(b.RIST2 || 0),
+           },
+           {
+             title: 'SIST',
+             dataIndex: 'SIST2',
+             width: '4%',
+             align: 'center',
+             render: (text) => text ? RoundFloat(text) : '-',
+             sorter: (a, b) => parseFloat(a.SIST2 || 0) - parseFloat(b.SIST2 || 0),
+           },
+         ],
+       },
+       {
+         title: 'Ethical Safety',
+         align: 'center',
+         children: [
+           {
+             title: 'RIRT',
+             dataIndex: 'RIRT3',
+             width: '4%',
+             align: 'center',
+             render: (text) => text ? RoundFloat(text) : '-',
+             sorter: (a, b) => parseFloat(a.RIRT3 || 0) - parseFloat(b.RIRT3 || 0),
+           },
+           {
+             title: 'SIRT',
+             dataIndex: 'SIRT3',
+             width: '4%',
+             align: 'center',
+             render: (text) => text ? RoundFloat(text) : '-',
+             sorter: (a, b) => parseFloat(a.SIRT3 || 0) - parseFloat(b.SIRT3 || 0),
+           },
+           {
+             title: 'RIST',
+             dataIndex: 'RIST3',
+             width: '4%',
+             align: 'center',
+             render: (text) => text ? RoundFloat(text) : '-',
+             sorter: (a, b) => parseFloat(a.RIST3 || 0) - parseFloat(b.RIST3 || 0),
+           },
+           {
+             title: 'SIST',
+             dataIndex: 'SIST3',
+             width: '4%',
+             align: 'center',
+             render: (text) => text ? RoundFloat(text) : '-',
+             sorter: (a, b) => parseFloat(a.SIST3 || 0) - parseFloat(b.SIST3 || 0),
+           },
+         ],
+       },
+       {
+         title: 'Total',
+         dataIndex: 'Total_ASR',
+         width: '4%',
+         align: 'center',
+         render: (text) => text ? RoundFloat(text) : '-',
+         sorter: (a, b) => parseFloat(a.Total_ASR || 0) - parseFloat(b.Total_ASR || 0),
+       },
+     ],
    },
    {
-     title: 'ARR',
+     title: 'refusal rate (%)',
      dataIndex: 'ARR',
      width: '4%',
      align: 'center',
@@ -246,15 +257,14 @@ function SSATable() {
     <div className="table-container">
       <Tabs activeKey={activeTab} onChange={setActiveTab}>
         <TabPane tab="USB-Base" key="1">
-          <div style={{ marginBottom: '16px' }}>{t('dataset.base_desc')}</div>
         </TabPane>
         <TabPane tab="USB-Hard" key="2">
-          <div style={{ marginBottom: '16px' }}>{t('dataset.hard_desc')}</div>
         </TabPane>
       </Tabs>
 
       <Table
-        columns={activityDetailColumns(t)}
+        className="usb-table"
+        columns={activityDetailColumns(t, activeTab)}
         dataSource={data}
         scroll={{ x: true }}
         pagination={false}

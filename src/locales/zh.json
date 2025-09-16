@@ -67,7 +67,7 @@
     "intro": "欢迎来到",
     "opensource": "USB-SafeBench 榜单",
     "content": "一个全面评估多模态大语言模型安全性的基准",
-    "date": " 最近更新于 2025年5月12日"
+    "date": " 最近更新于 2025年9月16日"
   },
   "footer": {
     "data_power_by": "数据支持",
@@ -104,7 +104,7 @@
   "dataset": {
     "base": "USB-Base 数据集",
     "hard": "USB-Hard 数据集",
-    "base_desc": "USB-Base 基准数据集上的性能指标",
-    "hard_desc": "USB-Hard 基准数据集上的性能指标"
+    "base_desc": "",
+    "hard_desc": ""
   }
 }

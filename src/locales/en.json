@@ -67,7 +67,7 @@
     "intro": "Welcome to ",
     "opensource": "USB-SafeBench Leaderboard",
     "content": "A comprehensive evaluation benchmark for MLLMs safety",
-    "date": " Last updated on May 12, 2025"
+    "date": " Last updated on September 16, 2025 "
   },
   "footer": {
     "data_power_by": "Data Powered by",
@@ -104,7 +104,7 @@
   "dataset": {
     "base": "USB-Base Dataset",
     "hard": "USB-Hard Dataset",
-    "base_desc": "Performance metrics on the USB-Base benchmark dataset",
-    "hard_desc": "Performance metrics on the USB-Hard benchmark dataset"
+    "base_desc": "",
+    "hard_desc": ""
   }
 }
