@@ -36,6 +36,9 @@ pnpm start
 pnpm build
 ```
 
+4. replace other file
+将build里的文件复制出来替换成其它的文件
+
 ## Deployment
 
 The site is automatically deployed to GitHub Pages through GitHub Actions when changes are pushed to the main branch.

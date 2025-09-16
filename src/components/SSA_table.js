@@ -1,5 +1,5 @@
 
-import { Card, Col, message, Row, Table, Radio, Tabs } from 'antd';
+import { Card, Col, message, Row, Table, Radio, Tabs, Statistic } from 'antd';
 import 'antd/dist/antd.css';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -205,7 +205,7 @@ const activityDetailColumns = (t, activeTab) => [
      ],
    },
    {
-     title: 'refusal rate (%)',
+     title: 'Refusal Rate (%)',
      dataIndex: 'ARR',
      width: '4%',
      align: 'center',
@@ -216,6 +216,7 @@ const activityDetailColumns = (t, activeTab) => [
 
 function SSATable() {
   const { t } = useTranslation();
+  const [palette, setPalette] = useState('blue');
   const [activeTab, setActiveTab] = useState('1');
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -254,16 +255,54 @@ function SSATable() {
   }, [activeTab]);
 
   return (
-    <div className="table-container">
-      <Tabs activeKey={activeTab} onChange={setActiveTab}>
-        <TabPane tab="USB-Base" key="1">
-        </TabPane>
-        <TabPane tab="USB-Hard" key="2">
-        </TabPane>
-      </Tabs>
+    <div className={`table-container scoreboard-light usb-theme--${palette}`}>
+      {/* 页面头部区域 */}
+      <div className="page-header">
+        <h1 className="page-title">USB Safety Assessment</h1>
+        <p className="page-subtitle">
+          基于USB-Base和USB-Hard两个数据集的安全性评估结果，涵盖了多种安全项测试
+        </p>
+
+        {/* 统计信息卡片 */}
+        <div className="stats-container">
+          <div className="stat-card">
+            <div className="stat-number">{data.length}</div>
+            <div className="stat-label">模型总数</div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-number">2</div>
+            <div className="stat-label">数据集</div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-number">13</div>
+            <div className="stat-label">测试项</div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-number">
+              {data.length > 0 ? Math.round(data.reduce((acc, item) => acc + parseFloat(item.Total_ASR || 0), 0) / data.length) : 0}%
+            </div>
+            <div className="stat-label">平均安全率</div>
+          </div>
+        </div>
+      </div>
+
+      <div className="toolbar-glass">
+        <Tabs activeKey={activeTab} onChange={setActiveTab}>
+          <TabPane tab="USB-Base" key="1">
+            <div style={{color: '#64748b', fontSize: '14px', textAlign: 'center', marginBottom: '16px'}}>
+              基础难度的安全性评估数据集，包含常见的安全性测试场景
+            </div>
+          </TabPane>
+          <TabPane tab="USB-Hard" key="2">
+            <div style={{color: '#64748b', fontSize: '14px', textAlign: 'center', marginBottom: '16px'}}>
+              高难度的安全性评估数据集，包含复杂和挑战性的安全测试场景
+            </div>
+          </TabPane>
+        </Tabs>
+      </div>
 
       <Table
-        className="usb-table"
+        className="usb-table usb-table--pastel"
         columns={activityDetailColumns(t, activeTab)}
         dataSource={data}
         scroll={{ x: true }}

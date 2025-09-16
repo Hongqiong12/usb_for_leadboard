@@ -1,4 +1,4 @@
-import { Card, Col, message, Row, Table } from 'antd';
+import { Card, Col, message, Row, Table, Statistic, Radio } from 'antd';
 import 'antd/dist/antd.css';
 import { t } from 'i18next';
 import React, { useEffect, useState } from 'react';
@@ -356,6 +356,7 @@ function DateTitle(props) {
 }
 
 function MyTable(props) {
+  const [palette, setPalette] = useState('blue');
   const [state, setState] = useState({
     object: 'company',
     index: 'activity',
@@ -542,23 +543,54 @@ function MyTable(props) {
     type,
   } = state;
   return (
-    <div className="table-container scoreboard-light">
+    <div className={`table-container scoreboard-light usb-theme--${palette}`}>
+        {/* 页面头部区域 */}
+        <div className="page-header">
+          <h1 className="page-title">USB Safety Leaderboard</h1>
+          <p className="page-subtitle">
+            综合评估多模态大语言模型的安全性能，涵盖国家安全、公共安全和伦理安全三大维度
+          </p>
+          
+          
+          {/* 统计信息卡片 */}
+          <div className="stats-container">
+            <div className="stat-card">
+              <div className="stat-number">{data.length}</div>
+              <div className="stat-label">模型总数</div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-number">3</div>
+              <div className="stat-label">安全维度</div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-number">12</div>
+              <div className="stat-label">评估指标</div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-number">
+                {data.length > 0 ? Math.round(data.reduce((acc, item) => acc + parseFloat(item.total || 0), 0) / data.length) : 0}%
+              </div>
+              <div className="stat-label">平均安全率</div>
+            </div>
+          </div>
+        </div>
+
         <Card>
-          <TablePanel
-            type={type}
-            setState={updateDate}
-            object={object}
-            index={index}
-            region={region}
-            hasDetail={hasDetail}
-            showDetail={showDetail}
-            month={month}
-            year={year}
-          />
+          <div className="toolbar-glass">
+            <TablePanel
+              type={type}
+              setState={updateDate}
+              object={object}
+              index={index}
+              region={region}
+              hasDetail={hasDetail}
+              showDetail={showDetail}
+              month={month}
+              year={year}
+            />
+          </div>
           <Table
-            className="usb-table"
-            // Todo
-            // scroll={{ x: 1500, y: 300 }}
+            className="usb-table usb-table--pastel"
             columns={columns}
             rowKey={(record) => record.rank}
             dataSource={data.slice(0, Math.min(showSize, data.length))}
