@@ -104,7 +104,17 @@
   "dataset": {
     "base": "USB-Base Dataset",
     "hard": "USB-Hard Dataset",
-    "base_desc": "",
-    "hard_desc": ""
+    "base_desc": "Basic difficulty safety evaluation dataset containing common safety test scenarios",
+    "hard_desc": "High difficulty safety evaluation dataset containing complex and challenging safety test scenarios"
+  },
+  "ssa": {
+    "title": "USB Safety Assessment",
+    "subtitle": "Safety evaluation results based on USB-Base and USB-Hard datasets, covering various security test items",
+    "stats": {
+      "totalModels": "Total Models",
+      "datasets": "Datasets",
+      "testItems": "Test Items",
+      "avgSafetyRate": "Average Safety Rate"
+    }
   }
 }

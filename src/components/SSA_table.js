@@ -260,28 +260,28 @@ function SSATable() {
       <div className="page-header">
         <h1 className="page-title">USB Safety Assessment</h1>
         <p className="page-subtitle">
-          基于USB-Base和USB-Hard两个数据集的安全性评估结果，涵盖了多种安全项测试
+          {t('ssa.subtitle')}
         </p>
 
         {/* 统计信息卡片 */}
         <div className="stats-container">
           <div className="stat-card">
             <div className="stat-number">{data.length}</div>
-            <div className="stat-label">模型总数</div>
+            <div className="stat-label">{t('ssa.stats.totalModels')}</div>
           </div>
           <div className="stat-card">
             <div className="stat-number">2</div>
-            <div className="stat-label">数据集</div>
+            <div className="stat-label">{t('ssa.stats.datasets')}</div>
           </div>
           <div className="stat-card">
             <div className="stat-number">13</div>
-            <div className="stat-label">测试项</div>
+            <div className="stat-label">{t('ssa.stats.testItems')}</div>
           </div>
           <div className="stat-card">
             <div className="stat-number">
               {data.length > 0 ? Math.round(data.reduce((acc, item) => acc + parseFloat(item.Total_ASR || 0), 0) / data.length) : 0}%
             </div>
-            <div className="stat-label">平均安全率</div>
+            <div className="stat-label">{t('ssa.stats.avgSafetyRate')}</div>
           </div>
         </div>
       </div>
@@ -290,12 +290,12 @@ function SSATable() {
         <Tabs activeKey={activeTab} onChange={setActiveTab}>
           <TabPane tab="USB-Base" key="1">
             <div style={{color: '#64748b', fontSize: '14px', textAlign: 'center', marginBottom: '16px'}}>
-              基础难度的安全性评估数据集，包含常见的安全性测试场景
+              {t('dataset.base_desc')}
             </div>
           </TabPane>
           <TabPane tab="USB-Hard" key="2">
             <div style={{color: '#64748b', fontSize: '14px', textAlign: 'center', marginBottom: '16px'}}>
-              高难度的安全性评估数据集，包含复杂和挑战性的安全测试场景
+              {t('dataset.hard_desc')}
             </div>
           </TabPane>
         </Tabs>

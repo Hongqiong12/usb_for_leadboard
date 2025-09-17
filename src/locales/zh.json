@@ -104,7 +104,17 @@
   "dataset": {
     "base": "USB-Base 数据集",
     "hard": "USB-Hard 数据集",
-    "base_desc": "",
-    "hard_desc": ""
+    "base_desc": "基础难度的安全性评估数据集，包含常见的安全性测试场景",
+    "hard_desc": "高难度的安全性评估数据集，包含复杂和挑战性的安全测试场景"
+  },
+  "ssa": {
+    "title": "USB Safety Assessment",
+    "subtitle": "基于USB-Base和USB-Hard两个数据集的安全性评估结果，涵盖了多种安全项测试",
+    "stats": {
+      "totalModels": "模型总数",
+      "datasets": "数据集",
+      "testItems": "测试项",
+      "avgSafetyRate": "平均安全率"
+    }
   }
 }
