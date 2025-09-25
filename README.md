@@ -44,3 +44,4 @@ pnpm build
 The site is automatically deployed to GitHub Pages through GitHub Actions when changes are pushed to the main branch.
 
 Visit the leaderboard at: https://Hongqiong12.github.io/usb_for_leadboard
+ 
