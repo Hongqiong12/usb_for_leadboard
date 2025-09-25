@@ -15,7 +15,7 @@ const fetchCSVData = async () => {
     const response = await fetch(process.env.PUBLIC_URL + '/models_results.csv');
     const text = await response.text();
     const rows = text.split('\n').slice(1); // 去掉标题行
-    return rows.map(row => {
+    const data = rows.map(row => {
       const values = row.split(',');
       return {
         rank: values[0],
@@ -36,6 +36,16 @@ const fetchCSVData = async () => {
         arr: values[15]
       };
     });
+    
+    // Sort by total score (descending order - higher score = better rank)
+    data.sort((a, b) => parseFloat(b.total || 0) - parseFloat(a.total || 0));
+    
+    // Recalculate ranks based on sorted order
+    data.forEach((item, index) => {
+      item.rank = (index + 1).toString();
+    });
+    
+    return data;
 };
 
 
@@ -571,6 +581,12 @@ function MyTable(props) {
                 {data.length > 0 ? Math.round(data.reduce((acc, item) => acc + parseFloat(item.total || 0), 0) / data.length) : 0}%
               </div>
               <div className="stat-label">平均安全率</div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-number">
+                {data.length > 0 ? Math.round(data.reduce((acc, item) => acc + parseFloat(item.arr || 0), 0) / data.length) : 0}%
+              </div>
+              <div className="stat-label">平均拒绝率</div>
             </div>
           </div>
         </div>

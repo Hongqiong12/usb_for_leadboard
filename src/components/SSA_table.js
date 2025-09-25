@@ -243,6 +243,15 @@ function SSATable() {
           Total_ASR: parseFloat(item.Total_ASR),
           ARR: parseFloat(item.ARR),
         }));
+        
+        // Sort by Total_ASR (descending order - higher score = better rank)
+        processedData.sort((a, b) => b.Total_ASR - a.Total_ASR);
+        
+        // Recalculate ranks based on sorted order
+        processedData.forEach((item, index) => {
+          item.rank = (index + 1).toString();
+        });
+        
         setData(processedData);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -282,6 +291,12 @@ function SSATable() {
               {data.length > 0 ? Math.round(data.reduce((acc, item) => acc + parseFloat(item.Total_ASR || 0), 0) / data.length) : 0}%
             </div>
             <div className="stat-label">{t('ssa.stats.avgSafetyRate')}</div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-number">
+              {data.length > 0 ? Math.round(data.reduce((acc, item) => acc + parseFloat(item.ARR || 0), 0) / data.length) : 0}%
+            </div>
+            <div className="stat-label">{t('Average Refusal Rate')}</div>
           </div>
         </div>
       </div>

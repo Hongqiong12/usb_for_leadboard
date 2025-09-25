@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/usb_for_leadboard/static/css/main.c074295e.css",
-    "main.js": "/usb_for_leadboard/static/js/main.558eb39d.js",
+    "main.css": "/usb_for_leadboard/static/css/main.b6c4da36.css",
+    "main.js": "/usb_for_leadboard/static/js/main.150ac570.js",
     "index.html": "/usb_for_leadboard/index.html",
-    "main.c074295e.css.map": "/usb_for_leadboard/static/css/main.c074295e.css.map",
-    "main.558eb39d.js.map": "/usb_for_leadboard/static/js/main.558eb39d.js.map"
+    "main.b6c4da36.css.map": "/usb_for_leadboard/static/css/main.b6c4da36.css.map",
+    "main.150ac570.js.map": "/usb_for_leadboard/static/js/main.150ac570.js.map"
   },
   "entrypoints": [
-    "static/css/main.c074295e.css",
-    "static/js/main.558eb39d.js"
+    "static/css/main.b6c4da36.css",
+    "static/js/main.150ac570.js"
   ]
 }
